@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { Dispatch, Fragment, SetStateAction } from 'react';
 import { Dialog, Tab, Transition } from '@headlessui/react';
 import { XMarkIcon } from '@heroicons/react/24/outline';
@@ -180,12 +181,12 @@ export default function NavbarMobile({
                     </a>
                   </div>
                   <div className="flow-root">
-                    <a
+                    <Link
                       href="#"
                       className="-m-2 block p-2 font-medium text-gray-900"
                     >
                       Creer un compte
-                    </a>
+                    </Link>
                   </div>
                 </div>
 

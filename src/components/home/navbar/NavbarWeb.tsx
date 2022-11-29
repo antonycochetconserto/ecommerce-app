@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { Dispatch, Fragment, SetStateAction } from 'react';
 import { Popover, Transition } from '@headlessui/react';
 import {
@@ -192,12 +193,12 @@ export default function NavbarWeb({
                   Sign in
                 </a>
                 <span className="h-6 w-px bg-gray-200" aria-hidden="true" />
-                <a
-                  href="#"
+                <Link
+                  href="/signup"
                   className="text-sm font-medium text-gray-700 hover:text-gray-800"
                 >
-                  Create account
-                </a>
+                  Creer un compte
+                </Link>
               </div>
 
               <div className="hidden lg:ml-8 lg:flex">
