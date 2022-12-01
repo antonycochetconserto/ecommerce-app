@@ -1,18 +1,23 @@
 import { Player, Controls } from '@lottiefiles/react-lottie-player';
-import { Auth } from 'aws-amplify';
+import { useState } from 'react';
+import ConfirmationCode from '../components/home/signup/ConfirmationCode';
+import SignUpForm from '../components/home/signup/SignUpForm';
 
 export default function SignUp() {
+  const [signUpSuccess, setSignUpSuccess] = useState<boolean>(false);
+  const [username, setUsername] = useState<string>('');
+
   return (
     <div className="w-full h-screen bg-[conic-gradient(at_bottom_right,_var(--tw-gradient-stops))] from-green-300 via-blue-500 to-purple-600 flex items-center justify-center">
       <div className="max-w-7xl w-full bg-white shadow-2xl relative">
-        <h1 className="text-2xl font-bold tracking-tighter absolute top-4 left-8 text-gray-800">
+        <h1 className="text-2xl font-bold tracking-tighter absolute top-8 left-12 text-gray-900">
           Brandii.
         </h1>
         <div className="flex flex-row justify-evenly items-center py-12">
           <div className="flex flex-col w-3/12 space-y-8">
             <div className="space-y-4">
               <h1 className="text-4xl font-bold tracking-tighter text-gray-800">
-                Creer un compte
+                {!signUpSuccess ? 'Creer un compte' : 'Confirmer le compte'}
               </h1>
               <p className="text-gray-500 font-medium tracking-tight">
                 Bénificier des fonctionnalités utilisateurs
@@ -20,39 +25,14 @@ export default function SignUp() {
             </div>
             <form>
               <div className="flex flex-col space-y-8">
-                <input
-                  className="border-b placeholder:text-gray-500 border-gray-200 appearance-none bg-transparent w-full text-gray-800 font-semibold py-3 leading-tight focus:outline-none"
-                  type="text"
-                  placeholder="Nom"
-                  aria-label="Full name"
-                />
-                <input
-                  className="border-b placeholder:text-gray-500 border-gray-200 appearance-none bg-transparent w-full text-gray-800 font-semibold py-3 leading-tight focus:outline-none"
-                  type="text"
-                  placeholder="Adresse mail"
-                  aria-label="Email"
-                />
-                <input
-                  className="border-b placeholder:text-gray-500 border-gray-200 appearance-none bg-transparent w-full text-gray-800 font-semibold py-3 leading-tight focus:outline-none"
-                  type="password"
-                  placeholder="Mot de passe"
-                  aria-label="Password"
-                />
-                <div className="space-y-4 w-full">
-                  <button
-                    className="flex-shrink-0 bg-blue-600 hover:bg-gray-900 text-sm text-white py-3 px-2 rounded w-full"
-                    type="button"
-                  >
-                    Je crée mon compte
-                  </button>
-                  <div className="border-b border-gray-600" />
-                  <button
-                    className="flex-shrink-0 border border-gray-800 text-gray-800 text-sm py-3 px-2 rounded w-full"
-                    type="button"
-                  >
-                    Je me connecte
-                  </button>
-                </div>
+                {!signUpSuccess ? (
+                  <SignUpForm
+                    setSignUpSuccess={setSignUpSuccess}
+                    setUsername={setUsername}
+                  />
+                ) : (
+                  <ConfirmationCode username={username} />
+                )}
               </div>
             </form>
           </div>
