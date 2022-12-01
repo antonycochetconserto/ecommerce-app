@@ -4,8 +4,11 @@ import { Auth } from 'aws-amplify';
 export default function SignUp() {
   return (
     <div className="w-full h-screen bg-[conic-gradient(at_bottom_right,_var(--tw-gradient-stops))] from-green-300 via-blue-500 to-purple-600 flex items-center justify-center">
-      <div className="max-w-7xl w-full bg-white shadow-2xl">
-        <div className="flex flex-row justify-evenly items-center py-16">
+      <div className="max-w-7xl w-full bg-white shadow-2xl relative">
+        <h1 className="text-2xl font-bold tracking-tighter absolute top-4 left-8 text-gray-800">
+          Brandii.
+        </h1>
+        <div className="flex flex-row justify-evenly items-center py-12">
           <div className="flex flex-col w-3/12 space-y-8">
             <div className="space-y-4">
               <h1 className="text-4xl font-bold tracking-tighter text-gray-800">
