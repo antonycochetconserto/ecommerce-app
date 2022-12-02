@@ -25,6 +25,8 @@ interface menuInterface {
   classNames: (...classes: string[]) => string;
   open: boolean;
   setOpen: Dispatch<SetStateAction<boolean>>;
+  user: { username: string };
+  signOut(): void;
 }
 
 export default function NavbarMobile({
@@ -32,6 +34,8 @@ export default function NavbarMobile({
   classNames,
   open,
   setOpen,
+  user,
+  signOut,
 }: menuInterface) {
   return (
     <>
@@ -172,22 +176,43 @@ export default function NavbarMobile({
                 </div>
 
                 <div className="space-y-6 border-t border-gray-200 py-6 px-4">
-                  <div className="flow-root">
-                    <a
-                      href="#"
-                      className="-m-2 block p-2 font-medium text-gray-900"
-                    >
-                      Se connecter
-                    </a>
-                  </div>
-                  <div className="flow-root">
-                    <Link
-                      href="#"
-                      className="-m-2 block p-2 font-medium text-gray-900"
-                    >
-                      Creer un compte
-                    </Link>
-                  </div>
+                  {user.username ? (
+                    <>
+                      <div className="flow-root">
+                        <p className="text-sm text-gray-700">
+                          Bonjour{' '}
+                          <span className="font-bold">{user.username}</span>
+                        </p>
+                      </div>
+                      <div className="flow-root">
+                        <p
+                          className="text-sm font-medium text-gray-700 hover:text-gray-800 cursor-pointer"
+                          onClick={() => signOut()}
+                        >
+                          Se déconnecter
+                        </p>
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <div className="flow-root">
+                        <Link
+                          href="/signin"
+                          className="-m-2 block p-2 font-medium text-gray-900"
+                        >
+                          Se connecter
+                        </Link>
+                      </div>
+                      <div className="flow-root">
+                        <Link
+                          href="#"
+                          className="-m-2 block p-2 font-medium text-gray-900"
+                        >
+                          Creer un compte
+                        </Link>
+                      </div>
+                    </>
+                  )}
                 </div>
 
                 <div className="border-t border-gray-200 py-6 px-4">

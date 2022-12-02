@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { Auth } from 'aws-amplify';
+import { useRouter } from 'next/router';
 import NavbarMobile from './NavbarMobile';
 import NavbarWeb from './NavbarWeb';
 
@@ -119,25 +121,42 @@ const classNames = (...classes: string[]): string => {
   return classes.filter(Boolean).join(' ');
 };
 
-export default function Navbar() {
+interface NavbarInterface {
+  user: { username: string };
+}
+
+export default function Navbar({ user }: NavbarInterface) {
   const [open, setOpen] = useState<boolean>(false);
+  const router = useRouter();
+  async function signOut() {
+    try {
+      await Auth.signOut().then(() => {
+        router.pathname === '/' ? router.reload() : router.push('/');
+      });
+    } catch (error) {
+      console.log('error signing out: ', error);
+    }
+  }
 
   return (
-    <div className="bg-white">
+    <>
       {/* Mobile menu */}
       <NavbarMobile
         navigation={navigation}
         classNames={classNames}
         open={open}
         setOpen={setOpen}
+        user={user}
+        signOut={signOut}
       />
       {/* Mobile web */}
       <NavbarWeb
         navigation={navigation}
         classNames={classNames}
-        open={open}
         setOpen={setOpen}
+        user={user}
+        signOut={signOut}
       />
-    </div>
+    </>
   );
 }

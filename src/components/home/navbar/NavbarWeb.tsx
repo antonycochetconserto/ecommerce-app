@@ -27,15 +27,17 @@ interface menuInterface {
     pages: { name: string; href: string }[];
   };
   classNames: (...classes: string[]) => string;
-  open: boolean;
   setOpen: Dispatch<SetStateAction<boolean>>;
+  user: { username: string };
+  signOut(): void;
 }
 
 export default function NavbarWeb({
   navigation,
   classNames,
-  open,
   setOpen,
+  user,
+  signOut,
 }: menuInterface) {
   return (
     <header className="relative bg-white">
@@ -186,19 +188,36 @@ export default function NavbarWeb({
 
             <div className="ml-auto flex items-center">
               <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
-                <a
-                  href="#"
-                  className="text-sm font-medium text-gray-700 hover:text-gray-800"
-                >
-                  Sign in
-                </a>
-                <span className="h-6 w-px bg-gray-200" aria-hidden="true" />
-                <Link
-                  href="/signup"
-                  className="text-sm font-medium text-gray-700 hover:text-gray-800"
-                >
-                  Creer un compte
-                </Link>
+                {user.username ? (
+                  <>
+                    <p className="text-sm text-gray-700">
+                      Bonjour <span className="font-bold">{user.username}</span>
+                    </p>
+                    <span className="h-6 w-px bg-gray-200" aria-hidden="true" />
+                    <p
+                      className="text-sm font-medium text-gray-700 hover:text-gray-800 cursor-pointer"
+                      onClick={() => signOut()}
+                    >
+                      Se déconnecter
+                    </p>
+                  </>
+                ) : (
+                  <>
+                    <Link
+                      href="/signin"
+                      className="text-sm font-medium text-gray-700 hover:text-gray-800"
+                    >
+                      Se connecter
+                    </Link>
+                    <span className="h-6 w-px bg-gray-200" aria-hidden="true" />
+                    <Link
+                      href="/signup"
+                      className="text-sm font-medium text-gray-700 hover:text-gray-800"
+                    >
+                      Creer un compte
+                    </Link>
+                  </>
+                )}
               </div>
 
               <div className="hidden lg:ml-8 lg:flex">

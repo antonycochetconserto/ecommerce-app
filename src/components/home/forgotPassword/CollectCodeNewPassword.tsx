@@ -1,44 +1,33 @@
 import { Auth } from 'aws-amplify';
 import { useState } from 'react';
 
-interface SignupInterface {
-  setSignUpSuccess: any;
-  setUsername: any;
+interface ICollectCodeNewPassword {
+  username: string;
 }
 
-export default function SignUpForm({
-  setSignUpSuccess,
-  setUsername,
-}: SignupInterface) {
+export default function CollectCodeNewPassword({
+  username,
+}: ICollectCodeNewPassword) {
   const [onForm, setOnForm] = useState<{
-    username: string;
-    email: string;
-    password: string;
+    code: string;
+    new_password: string;
+    new_password_confirmation: string;
   }>({
-    username: '',
-    email: '',
-    password: '',
+    code: '',
+    new_password: '',
+    new_password_confirmation: '',
   });
 
-  async function signUp() {
-    const { username, password, email } = onForm;
-    try {
-      const { user } = await Auth.signUp({
-        username,
-        password,
-        attributes: {
-          email,
-        },
-        autoSignIn: {
-          // optional - enables auto sign in after user is confirmed
-          enabled: true,
-        },
-      });
-      console.log(user);
-      setSignUpSuccess(true);
-      setUsername(user.getUsername());
-    } catch (error) {
-      console.log('error signing up:', error);
+  // Collect confirmation code and new password,
+  async function collecteCodeAndNewPassword() {
+    const { code, new_password, new_password_confirmation } = onForm;
+    //Password and password confirmation have to be the same
+    if (new_password === new_password_confirmation) {
+      Auth.forgotPasswordSubmit(username, code, new_password)
+        .then((data) => {
+          console.log(data);
+        })
+        .catch((err) => console.log(err));
     }
   }
   return (
@@ -46,24 +35,12 @@ export default function SignUpForm({
       <input
         className="border-b placeholder:text-gray-500 border-gray-200 appearance-none bg-transparent w-full text-gray-800 font-semibold py-3 leading-tight focus:outline-none"
         type="text"
-        placeholder="Nom"
-        aria-label="Full name"
+        placeholder="Code"
+        aria-label="Code"
         onChange={(e) =>
           setOnForm({
             ...onForm,
-            username: e.target.value,
-          })
-        }
-      />
-      <input
-        className="border-b placeholder:text-gray-500 border-gray-200 appearance-none bg-transparent w-full text-gray-800 font-semibold py-3 leading-tight focus:outline-none"
-        type="text"
-        placeholder="Adresse mail"
-        aria-label="Email"
-        onChange={(e) =>
-          setOnForm({
-            ...onForm,
-            email: e.target.value,
+            code: e.target.value,
           })
         }
       />
@@ -75,7 +52,19 @@ export default function SignUpForm({
         onChange={(e) =>
           setOnForm({
             ...onForm,
-            password: e.target.value,
+            new_password: e.target.value,
+          })
+        }
+      />
+      <input
+        className="border-b placeholder:text-gray-500 border-gray-200 appearance-none bg-transparent w-full text-gray-800 font-semibold py-3 leading-tight focus:outline-none"
+        type="password"
+        placeholder="Confirmer le mot de passe"
+        aria-label="ConfirmPassword"
+        onChange={(e) =>
+          setOnForm({
+            ...onForm,
+            new_password_confirmation: e.target.value,
           })
         }
       />
@@ -83,9 +72,9 @@ export default function SignUpForm({
         <button
           className="flex-shrink-0 bg-[conic-gradient(at_bottom_right,_var(--tw-gradient-stops))] from-green-300 via-blue-500 to-purple-600 text-sm text-white py-3 px-2 rounded w-full"
           type="button"
-          onClick={() => signUp()}
+          onClick={() => collecteCodeAndNewPassword()}
         >
-          Je crée mon compte
+          Je valide mon mot de passe
         </button>
         <div className="border-b border-gray-600" />
         <button
