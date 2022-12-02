@@ -1,9 +1,10 @@
 import { Auth } from 'aws-amplify';
-import { useState } from 'react';
+import Link from 'next/link';
+import React, { SetStateAction, useState } from 'react';
 
 interface SignupInterface {
-  setSignUpSuccess: any;
-  setUsername: any;
+  setSignUpSuccess: React.Dispatch<SetStateAction<boolean>>;
+  setUsername: React.Dispatch<SetStateAction<string>>;
 }
 
 export default function SignUpForm({
@@ -81,19 +82,19 @@ export default function SignUpForm({
       />
       <div className="space-y-4 w-full">
         <button
-          className="flex-shrink-0 bg-[conic-gradient(at_bottom_right,_var(--tw-gradient-stops))] from-green-300 via-blue-500 to-purple-600 text-sm text-white py-3 px-2 rounded w-full"
+          className="flex-shrink-0 bg-[conic-gradient(at_bottom_right,_var(--tw-gradient-stops))] from-green-300 via-blue-500 to-purple-600 text-sm text-white py-3 px-2 rounded w-full focus:ring-2 focus:ring-blue-400 ring-offset-2"
           type="button"
           onClick={() => signUp()}
         >
           Je crée mon compte
         </button>
         <div className="border-b border-gray-600" />
-        <button
-          className="flex-shrink-0 border border-gray-800 text-gray-800 text-sm py-3 px-2 rounded w-full"
-          type="button"
+        <Link
+          className="flex-shrink-0 border border-gray-800 text-gray-800 text-sm py-3 px-2 rounded w-full inline-block text-center"
+          href="/signin"
         >
           Je me connecte
-        </button>
+        </Link>
       </div>
     </>
   );

@@ -1,5 +1,6 @@
 import { Auth } from 'aws-amplify';
 import { useState } from 'react';
+import useRouter from 'next/router';
 
 interface ICollectCodeNewPassword {
   username: string;
@@ -8,6 +9,7 @@ interface ICollectCodeNewPassword {
 export default function CollectCodeNewPassword({
   username,
 }: ICollectCodeNewPassword) {
+  const router = useRouter;
   const [onForm, setOnForm] = useState<{
     code: string;
     new_password: string;
@@ -25,6 +27,7 @@ export default function CollectCodeNewPassword({
     if (new_password === new_password_confirmation) {
       Auth.forgotPasswordSubmit(username, code, new_password)
         .then((data) => {
+          router.push('/signin');
           console.log(data);
         })
         .catch((err) => console.log(err));
@@ -70,7 +73,7 @@ export default function CollectCodeNewPassword({
       />
       <div className="space-y-4 w-full">
         <button
-          className="flex-shrink-0 bg-[conic-gradient(at_bottom_right,_var(--tw-gradient-stops))] from-green-300 via-blue-500 to-purple-600 text-sm text-white py-3 px-2 rounded w-full"
+          className="flex-shrink-0 bg-[conic-gradient(at_bottom_right,_var(--tw-gradient-stops))] from-green-300 via-blue-500 to-purple-600 text-sm text-white py-3 px-2 rounded w-full focus:ring-2 focus:ring-blue-400 ring-offset-2"
           type="button"
           onClick={() => collecteCodeAndNewPassword()}
         >

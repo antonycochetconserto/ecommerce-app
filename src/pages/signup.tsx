@@ -1,7 +1,7 @@
 import { Player, Controls } from '@lottiefiles/react-lottie-player';
 import { useState } from 'react';
-import ConfirmationCode from '../components/home/signup/ConfirmationCode';
-import SignUpForm from '../components/home/signup/SignUpForm';
+import ConfirmationCode from '../components/home/authent/signup/ConfirmationCode';
+import SignUpForm from '../components/home/authent/signup/SignUpForm';
 
 export default function signup() {
   const [signUpSuccess, setSignUpSuccess] = useState<boolean>(false);
