@@ -14,6 +14,9 @@
     "categories": {
       "auth": {
         "ecommerceapp6075d520": {}
+      },
+      "api": {
+        "ecommerceapp": {}
       }
     }
   }
