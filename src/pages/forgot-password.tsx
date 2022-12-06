@@ -1,7 +1,7 @@
 import { Player, Controls } from '@lottiefiles/react-lottie-player';
 import { useState } from 'react';
-import CollectCodeNewPassword from '../components/home/forgotPassword/CollectCodeNewPassword';
-import SendCodePassword from '../components/home/forgotPassword/SendCodePassword';
+import CollectCodeNewPassword from '../components/home/authent/forgotPassword/CollectCodeNewPassword';
+import SendCodePassword from '../components/home/authent/forgotPassword/SendCodePassword';
 
 export default function forgotPassword() {
   const [forgotPasswordSuccess, setForgotPasswordSuccess] =

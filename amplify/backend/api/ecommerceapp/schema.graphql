@@ -7,23 +7,31 @@ type Product @model {
   id: ID!
   title: String!
   subTitle: String
-  price: Float!
+  price: Float
   quickDescription: String
   fullDescription: String
   size: String
   weight: Float
   quantity: Int
   isAvailable: Boolean
-  imageBrand: String
   reference: String
   stock: Int
   composition: String
   category: Category @hasOne
+  brand: Brand @hasOne
 }
 
 type Category @model {
   id: ID!
   title: String!
   description: String
+  products: [Product] @hasMany
+}
+
+type Brand @model {
+  id: ID!
+  title: String!
+  description: String
+  image: String
   products: [Product] @hasMany
 }

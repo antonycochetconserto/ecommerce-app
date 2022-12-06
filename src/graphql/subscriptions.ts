@@ -15,7 +15,6 @@ export const onCreateProduct = /* GraphQL */ `
       weight
       quantity
       isAvailable
-      imageBrand
       reference
       stock
       composition
@@ -29,10 +28,23 @@ export const onCreateProduct = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      brand {
+        id
+        title
+        description
+        image
+        products {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
       createdAt
       updatedAt
       categoryProductsId
+      brandProductsId
       productCategoryId
+      productBrandId
     }
   }
 `;
@@ -49,7 +61,6 @@ export const onUpdateProduct = /* GraphQL */ `
       weight
       quantity
       isAvailable
-      imageBrand
       reference
       stock
       composition
@@ -63,10 +74,23 @@ export const onUpdateProduct = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      brand {
+        id
+        title
+        description
+        image
+        products {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
       createdAt
       updatedAt
       categoryProductsId
+      brandProductsId
       productCategoryId
+      productBrandId
     }
   }
 `;
@@ -83,7 +107,6 @@ export const onDeleteProduct = /* GraphQL */ `
       weight
       quantity
       isAvailable
-      imageBrand
       reference
       stock
       composition
@@ -97,10 +120,23 @@ export const onDeleteProduct = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      brand {
+        id
+        title
+        description
+        image
+        products {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
       createdAt
       updatedAt
       categoryProductsId
+      brandProductsId
       productCategoryId
+      productBrandId
     }
   }
 `;
@@ -122,14 +158,15 @@ export const onCreateCategory = /* GraphQL */ `
           weight
           quantity
           isAvailable
-          imageBrand
           reference
           stock
           composition
           createdAt
           updatedAt
           categoryProductsId
+          brandProductsId
           productCategoryId
+          productBrandId
         }
         nextToken
       }
@@ -156,14 +193,15 @@ export const onUpdateCategory = /* GraphQL */ `
           weight
           quantity
           isAvailable
-          imageBrand
           reference
           stock
           composition
           createdAt
           updatedAt
           categoryProductsId
+          brandProductsId
           productCategoryId
+          productBrandId
         }
         nextToken
       }
@@ -190,14 +228,123 @@ export const onDeleteCategory = /* GraphQL */ `
           weight
           quantity
           isAvailable
-          imageBrand
           reference
           stock
           composition
           createdAt
           updatedAt
           categoryProductsId
+          brandProductsId
           productCategoryId
+          productBrandId
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onCreateBrand = /* GraphQL */ `
+  subscription OnCreateBrand($filter: ModelSubscriptionBrandFilterInput) {
+    onCreateBrand(filter: $filter) {
+      id
+      title
+      description
+      image
+      products {
+        items {
+          id
+          title
+          subTitle
+          price
+          quickDescription
+          fullDescription
+          size
+          weight
+          quantity
+          isAvailable
+          reference
+          stock
+          composition
+          createdAt
+          updatedAt
+          categoryProductsId
+          brandProductsId
+          productCategoryId
+          productBrandId
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateBrand = /* GraphQL */ `
+  subscription OnUpdateBrand($filter: ModelSubscriptionBrandFilterInput) {
+    onUpdateBrand(filter: $filter) {
+      id
+      title
+      description
+      image
+      products {
+        items {
+          id
+          title
+          subTitle
+          price
+          quickDescription
+          fullDescription
+          size
+          weight
+          quantity
+          isAvailable
+          reference
+          stock
+          composition
+          createdAt
+          updatedAt
+          categoryProductsId
+          brandProductsId
+          productCategoryId
+          productBrandId
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteBrand = /* GraphQL */ `
+  subscription OnDeleteBrand($filter: ModelSubscriptionBrandFilterInput) {
+    onDeleteBrand(filter: $filter) {
+      id
+      title
+      description
+      image
+      products {
+        items {
+          id
+          title
+          subTitle
+          price
+          quickDescription
+          fullDescription
+          size
+          weight
+          quantity
+          isAvailable
+          reference
+          stock
+          composition
+          createdAt
+          updatedAt
+          categoryProductsId
+          brandProductsId
+          productCategoryId
+          productBrandId
         }
         nextToken
       }

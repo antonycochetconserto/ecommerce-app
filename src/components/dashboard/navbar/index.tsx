@@ -41,7 +41,7 @@ export default function Navbar() {
                   href="/dashboard/products"
                   className="text-gray-500 hover:underline"
                 >
-                  Produit
+                  Produits
                 </Link>
               </li>
               <li>
@@ -49,7 +49,7 @@ export default function Navbar() {
                   href="/dashboard/categories"
                   className="text-gray-500 hover:underline"
                 >
-                  Categorie
+                  Categories
                 </Link>
               </li>
               <li>

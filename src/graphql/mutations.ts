@@ -18,7 +18,6 @@ export const createProduct = /* GraphQL */ `
       weight
       quantity
       isAvailable
-      imageBrand
       reference
       stock
       composition
@@ -32,10 +31,23 @@ export const createProduct = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      brand {
+        id
+        title
+        description
+        image
+        products {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
       createdAt
       updatedAt
       categoryProductsId
+      brandProductsId
       productCategoryId
+      productBrandId
     }
   }
 `;
@@ -55,7 +67,6 @@ export const updateProduct = /* GraphQL */ `
       weight
       quantity
       isAvailable
-      imageBrand
       reference
       stock
       composition
@@ -69,10 +80,23 @@ export const updateProduct = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      brand {
+        id
+        title
+        description
+        image
+        products {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
       createdAt
       updatedAt
       categoryProductsId
+      brandProductsId
       productCategoryId
+      productBrandId
     }
   }
 `;
@@ -92,7 +116,6 @@ export const deleteProduct = /* GraphQL */ `
       weight
       quantity
       isAvailable
-      imageBrand
       reference
       stock
       composition
@@ -106,10 +129,23 @@ export const deleteProduct = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      brand {
+        id
+        title
+        description
+        image
+        products {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
       createdAt
       updatedAt
       categoryProductsId
+      brandProductsId
       productCategoryId
+      productBrandId
     }
   }
 `;
@@ -134,14 +170,15 @@ export const createCategory = /* GraphQL */ `
           weight
           quantity
           isAvailable
-          imageBrand
           reference
           stock
           composition
           createdAt
           updatedAt
           categoryProductsId
+          brandProductsId
           productCategoryId
+          productBrandId
         }
         nextToken
       }
@@ -171,14 +208,15 @@ export const updateCategory = /* GraphQL */ `
           weight
           quantity
           isAvailable
-          imageBrand
           reference
           stock
           composition
           createdAt
           updatedAt
           categoryProductsId
+          brandProductsId
           productCategoryId
+          productBrandId
         }
         nextToken
       }
@@ -208,14 +246,132 @@ export const deleteCategory = /* GraphQL */ `
           weight
           quantity
           isAvailable
-          imageBrand
           reference
           stock
           composition
           createdAt
           updatedAt
           categoryProductsId
+          brandProductsId
           productCategoryId
+          productBrandId
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const createBrand = /* GraphQL */ `
+  mutation CreateBrand(
+    $input: CreateBrandInput!
+    $condition: ModelBrandConditionInput
+  ) {
+    createBrand(input: $input, condition: $condition) {
+      id
+      title
+      description
+      image
+      products {
+        items {
+          id
+          title
+          subTitle
+          price
+          quickDescription
+          fullDescription
+          size
+          weight
+          quantity
+          isAvailable
+          reference
+          stock
+          composition
+          createdAt
+          updatedAt
+          categoryProductsId
+          brandProductsId
+          productCategoryId
+          productBrandId
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateBrand = /* GraphQL */ `
+  mutation UpdateBrand(
+    $input: UpdateBrandInput!
+    $condition: ModelBrandConditionInput
+  ) {
+    updateBrand(input: $input, condition: $condition) {
+      id
+      title
+      description
+      image
+      products {
+        items {
+          id
+          title
+          subTitle
+          price
+          quickDescription
+          fullDescription
+          size
+          weight
+          quantity
+          isAvailable
+          reference
+          stock
+          composition
+          createdAt
+          updatedAt
+          categoryProductsId
+          brandProductsId
+          productCategoryId
+          productBrandId
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteBrand = /* GraphQL */ `
+  mutation DeleteBrand(
+    $input: DeleteBrandInput!
+    $condition: ModelBrandConditionInput
+  ) {
+    deleteBrand(input: $input, condition: $condition) {
+      id
+      title
+      description
+      image
+      products {
+        items {
+          id
+          title
+          subTitle
+          price
+          quickDescription
+          fullDescription
+          size
+          weight
+          quantity
+          isAvailable
+          reference
+          stock
+          composition
+          createdAt
+          updatedAt
+          categoryProductsId
+          brandProductsId
+          productCategoryId
+          productBrandId
         }
         nextToken
       }

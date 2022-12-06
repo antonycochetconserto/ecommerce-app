@@ -15,7 +15,6 @@ export const getProduct = /* GraphQL */ `
       weight
       quantity
       isAvailable
-      imageBrand
       reference
       stock
       composition
@@ -29,10 +28,23 @@ export const getProduct = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      brand {
+        id
+        title
+        description
+        image
+        products {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
       createdAt
       updatedAt
       categoryProductsId
+      brandProductsId
       productCategoryId
+      productBrandId
     }
   }
 `;
@@ -54,7 +66,6 @@ export const listProducts = /* GraphQL */ `
         weight
         quantity
         isAvailable
-        imageBrand
         reference
         stock
         composition
@@ -65,10 +76,20 @@ export const listProducts = /* GraphQL */ `
           createdAt
           updatedAt
         }
+        brand {
+          id
+          title
+          description
+          image
+          createdAt
+          updatedAt
+        }
         createdAt
         updatedAt
         categoryProductsId
+        brandProductsId
         productCategoryId
+        productBrandId
       }
       nextToken
     }
@@ -92,14 +113,15 @@ export const getCategory = /* GraphQL */ `
           weight
           quantity
           isAvailable
-          imageBrand
           reference
           stock
           composition
           createdAt
           updatedAt
           categoryProductsId
+          brandProductsId
           productCategoryId
+          productBrandId
         }
         nextToken
       }
@@ -119,6 +141,64 @@ export const listCategories = /* GraphQL */ `
         id
         title
         description
+        products {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getBrand = /* GraphQL */ `
+  query GetBrand($id: ID!) {
+    getBrand(id: $id) {
+      id
+      title
+      description
+      image
+      products {
+        items {
+          id
+          title
+          subTitle
+          price
+          quickDescription
+          fullDescription
+          size
+          weight
+          quantity
+          isAvailable
+          reference
+          stock
+          composition
+          createdAt
+          updatedAt
+          categoryProductsId
+          brandProductsId
+          productCategoryId
+          productBrandId
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listBrands = /* GraphQL */ `
+  query ListBrands(
+    $filter: ModelBrandFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listBrands(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        title
+        description
+        image
         products {
           nextToken
         }
