@@ -21,7 +21,9 @@ export const onCreateProduct = /* GraphQL */ `
       category {
         id
         title
-        description
+        subTitle
+        fullDescription
+        isAvailable
         products {
           nextToken
         }
@@ -31,8 +33,10 @@ export const onCreateProduct = /* GraphQL */ `
       brand {
         id
         title
-        description
+        subTitle
+        fullDescription
         image
+        isAvailable
         products {
           nextToken
         }
@@ -67,7 +71,9 @@ export const onUpdateProduct = /* GraphQL */ `
       category {
         id
         title
-        description
+        subTitle
+        fullDescription
+        isAvailable
         products {
           nextToken
         }
@@ -77,8 +83,10 @@ export const onUpdateProduct = /* GraphQL */ `
       brand {
         id
         title
-        description
+        subTitle
+        fullDescription
         image
+        isAvailable
         products {
           nextToken
         }
@@ -113,7 +121,9 @@ export const onDeleteProduct = /* GraphQL */ `
       category {
         id
         title
-        description
+        subTitle
+        fullDescription
+        isAvailable
         products {
           nextToken
         }
@@ -123,8 +133,10 @@ export const onDeleteProduct = /* GraphQL */ `
       brand {
         id
         title
-        description
+        subTitle
+        fullDescription
         image
+        isAvailable
         products {
           nextToken
         }
@@ -145,7 +157,9 @@ export const onCreateCategory = /* GraphQL */ `
     onCreateCategory(filter: $filter) {
       id
       title
-      description
+      subTitle
+      fullDescription
+      isAvailable
       products {
         items {
           id
@@ -180,7 +194,9 @@ export const onUpdateCategory = /* GraphQL */ `
     onUpdateCategory(filter: $filter) {
       id
       title
-      description
+      subTitle
+      fullDescription
+      isAvailable
       products {
         items {
           id
@@ -215,7 +231,9 @@ export const onDeleteCategory = /* GraphQL */ `
     onDeleteCategory(filter: $filter) {
       id
       title
-      description
+      subTitle
+      fullDescription
+      isAvailable
       products {
         items {
           id
@@ -250,8 +268,10 @@ export const onCreateBrand = /* GraphQL */ `
     onCreateBrand(filter: $filter) {
       id
       title
-      description
+      subTitle
+      fullDescription
       image
+      isAvailable
       products {
         items {
           id
@@ -286,8 +306,10 @@ export const onUpdateBrand = /* GraphQL */ `
     onUpdateBrand(filter: $filter) {
       id
       title
-      description
+      subTitle
+      fullDescription
       image
+      isAvailable
       products {
         items {
           id
@@ -322,8 +344,10 @@ export const onDeleteBrand = /* GraphQL */ `
     onDeleteBrand(filter: $filter) {
       id
       title
-      description
+      subTitle
+      fullDescription
       image
+      isAvailable
       products {
         items {
           id

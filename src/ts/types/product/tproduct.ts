@@ -1,4 +1,8 @@
+import { TBrand } from '../brand/tbrand';
+import { TCategory } from '../category/tcategory';
+
 export type TProduct = {
+  id: number;
   title: string;
   subTitle: string;
   price: number;
@@ -13,21 +17,6 @@ export type TProduct = {
   composition: string;
   productCategoryId: string;
   productBrandId: string;
-};
-
-export const productInitialValues = {
-  title: '',
-  subTitle: '',
-  price: 0,
-  fullDescription: '',
-  size: '',
-  weight: 0,
-  quantity: 0,
-  //image: '',
-  isAvailable: false,
-  reference: '',
-  stock: 0,
-  composition: '',
-  productCategoryId: '',
-  productBrandId: '',
+  brand: TBrand;
+  category: TCategory;
 };

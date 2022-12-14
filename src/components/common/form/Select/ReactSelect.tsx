@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Controller } from 'react-hook-form';
 import ReactSelect from 'react-select';
+import { TCategory } from '../../../../ts/types/category/tcategory';
+import { changeKeys } from '../../../../ts/helperFunctions/changeKeys';
 
 interface IDashboardHomeReactSelect {
   register: any;
@@ -8,22 +10,24 @@ interface IDashboardHomeReactSelect {
   labelTitle: string;
   value: string;
   placeholder: string;
+  data: {}[];
 }
-
-const categoryOptions: { value: string; label: string; id: string }[] = [
-  { value: 'Grocery', label: 'Grocery', id: 'fdskfdsklfsdlkfds' },
-  { value: 'Pharmacy', label: 'Pharmacy', id: 'fkdspoeazpoeaz' },
-  { value: 'Electronic', label: 'Electronic', id: 'fksdjkfjsdkfsdj' },
-  { value: 'Food', label: 'Food', id: 'oindfsksdjkfsdj' },
-];
-
 export default function DashboardHomeReactSelect({
   register,
   control,
   labelTitle,
   value,
   placeholder,
+  data,
 }: IDashboardHomeReactSelect) {
+  const keyMap = {
+    id: 'value',
+    title: 'label',
+  };
+
+  // ChangeKeys to change id and title key to value and label to get value in React Select option
+  const newArrayData = changeKeys(data, keyMap);
+
   return (
     <>
       <label className="block text-sm font-medium text-gray-900">
@@ -32,9 +36,9 @@ export default function DashboardHomeReactSelect({
       <Controller
         name={value}
         control={control}
-        render={({ field: { onChange, value, name, ref } }) => (
+        render={({ field: { onChange, value } }) => (
           <ReactSelect
-            options={categoryOptions}
+            options={newArrayData}
             styles={{
               control: (baseStyles) => ({
                 ...baseStyles,
@@ -45,9 +49,9 @@ export default function DashboardHomeReactSelect({
               }),
             }}
             placeholder={placeholder}
-            value={categoryOptions.find((c) => c.value === value)}
+            value={newArrayData.find((c) => c.value === value)}
             onChange={(selectedOption: any) => {
-              onChange(selectedOption.id);
+              onChange(selectedOption.value);
             }}
           />
         )}

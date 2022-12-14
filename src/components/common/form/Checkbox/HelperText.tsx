@@ -1,17 +1,19 @@
+import Label from '../Label/label';
+
 interface IDashboardFormInput {
   register: any;
   errors: any;
   labelTitle: string;
+  textDescription: string;
   value: string;
-  placeholder: string;
 }
 
 export default function DashboardFormCheckboxHelperText({
   register,
   errors,
   labelTitle,
+  textDescription,
   value,
-  placeholder,
 }: IDashboardFormInput) {
   return (
     <>
@@ -25,14 +27,12 @@ export default function DashboardFormCheckboxHelperText({
         />
       </div>
       <div className="ml-2 text-sm">
-        <label className="font-medium text-gray-900">
-          Disponiblité du produit
-        </label>
+        <Label isRequired={false} labelTitle={labelTitle} />
         <p
           id="helper-checkbox-text"
           className="text-xs font-normal text-gray-500"
         >
-          Permet de mentionner la disponibilité du produit au client
+          {textDescription}
         </p>
       </div>
     </>

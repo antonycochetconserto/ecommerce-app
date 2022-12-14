@@ -24,14 +24,18 @@ type Product @model {
 type Category @model {
   id: ID!
   title: String!
-  description: String
+  subTitle: String
+  fullDescription: String
+  isAvailable: Boolean
   products: [Product] @hasMany
 }
 
 type Brand @model {
   id: ID!
   title: String!
-  description: String
+  subTitle: String
+  fullDescription: String
   image: String
+  isAvailable: Boolean
   products: [Product] @hasMany
 }

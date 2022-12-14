@@ -1,6 +1,23 @@
+import { API } from 'aws-amplify';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
+import { listProducts } from '../../../graphql/queries';
+import { TProduct } from '../../../ts/types/product/tproduct';
 
 export default function ListProducts() {
+  const [products, setProducts] = useState<TProduct[]>([]);
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+
+  async function fetchProducts() {
+    const apiData: any = await API.graphql({ query: listProducts });
+    setProducts(apiData.data.listProducts.items);
+  }
+
+  console.log(products);
+
   return (
     <>
       <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl px-4 md:px-6 py-12">
@@ -23,116 +40,66 @@ export default function ListProducts() {
                   Nom du produit
                 </th>
                 <th scope="col" className="py-3 px-6">
-                  <div className="flex items-center">
-                    Couleur
-                    <a href="#">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="ml-1 w-3 h-3"
-                        aria-hidden="true"
-                        fill="currentColor"
-                        viewBox="0 0 320 512"
-                      >
-                        <path d="M27.66 224h264.7c24.6 0 36.89-29.78 19.54-47.12l-132.3-136.8c-5.406-5.406-12.47-8.107-19.53-8.107c-7.055 0-14.09 2.701-19.45 8.107L8.119 176.9C-9.229 194.2 3.055 224 27.66 224zM292.3 288H27.66c-24.6 0-36.89 29.77-19.54 47.12l132.5 136.8C145.9 477.3 152.1 480 160 480c7.053 0 14.12-2.703 19.53-8.109l132.3-136.8C329.2 317.8 316.9 288 292.3 288z" />
-                      </svg>
-                    </a>
-                  </div>
+                  <div className="flex items-center">Marque</div>
                 </th>
                 <th scope="col" className="py-3 px-6">
-                  <div className="flex items-center">
-                    Categorie
-                    <a href="#">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="ml-1 w-3 h-3"
-                        aria-hidden="true"
-                        fill="currentColor"
-                        viewBox="0 0 320 512"
-                      >
-                        <path d="M27.66 224h264.7c24.6 0 36.89-29.78 19.54-47.12l-132.3-136.8c-5.406-5.406-12.47-8.107-19.53-8.107c-7.055 0-14.09 2.701-19.45 8.107L8.119 176.9C-9.229 194.2 3.055 224 27.66 224zM292.3 288H27.66c-24.6 0-36.89 29.77-19.54 47.12l132.5 136.8C145.9 477.3 152.1 480 160 480c7.053 0 14.12-2.703 19.53-8.109l132.3-136.8C329.2 317.8 316.9 288 292.3 288z" />
-                      </svg>
-                    </a>
-                  </div>
+                  <div className="flex items-center">Categorie</div>
                 </th>
                 <th scope="col" className="py-3 px-6">
-                  <div className="flex items-center">
-                    Prix
-                    <a href="#">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="ml-1 w-3 h-3"
-                        aria-hidden="true"
-                        fill="currentColor"
-                        viewBox="0 0 320 512"
-                      >
-                        <path d="M27.66 224h264.7c24.6 0 36.89-29.78 19.54-47.12l-132.3-136.8c-5.406-5.406-12.47-8.107-19.53-8.107c-7.055 0-14.09 2.701-19.45 8.107L8.119 176.9C-9.229 194.2 3.055 224 27.66 224zM292.3 288H27.66c-24.6 0-36.89 29.77-19.54 47.12l132.5 136.8C145.9 477.3 152.1 480 160 480c7.053 0 14.12-2.703 19.53-8.109l132.3-136.8C329.2 317.8 316.9 288 292.3 288z" />
-                      </svg>
-                    </a>
-                  </div>
+                  <div className="flex items-center">Prix</div>
                 </th>
                 <th scope="col" className="py-3 px-6">
-                  <span className="sr-only">Edit</span>
+                  <div className="flex items-center">Stock</div>
+                </th>
+                <th scope="col" className="py-3 px-6">
+                  <div className="flex items-center">Disponibilité</div>
+                </th>
+                <th scope="col" className="py-3 px-6 text-right">
+                  Action
                 </th>
               </tr>
             </thead>
             <tbody>
-              <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                <th
-                  scope="row"
-                  className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                >
-                  Apple MacBook Pro 17"
-                </th>
-                <td className="py-4 px-6">Sliver</td>
-                <td className="py-4 px-6">Laptop</td>
-                <td className="py-4 px-6">$2999</td>
-                <td className="py-4 px-6 text-right">
-                  <a
-                    href="#"
-                    className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+              {products.map((product) => {
+                return (
+                  <tr
+                    key={product.id}
+                    className="bg-white border-b last:border-none"
                   >
-                    Editer
-                  </a>
-                </td>
-              </tr>
-              <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                <th
-                  scope="row"
-                  className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                >
-                  Microsoft Surface Pro
-                </th>
-                <td className="py-4 px-6">White</td>
-                <td className="py-4 px-6">Laptop PC</td>
-                <td className="py-4 px-6">$1999</td>
-                <td className="py-4 px-6 text-right">
-                  <a
-                    href="#"
-                    className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-                  >
-                    Editer
-                  </a>
-                </td>
-              </tr>
-              <tr className="bg-white dark:bg-gray-800">
-                <th
-                  scope="row"
-                  className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                >
-                  Magic Mouse 2
-                </th>
-                <td className="py-4 px-6">Black</td>
-                <td className="py-4 px-6">Accessories</td>
-                <td className="py-4 px-6">$99</td>
-                <td className="py-4 px-6 text-right">
-                  <a
-                    href="#"
-                    className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-                  >
-                    Editer
-                  </a>
-                </td>
-              </tr>
+                    <th
+                      scope="row"
+                      className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                    >
+                      {product.title}
+                    </th>
+                    <td className="py-4 px-6">{product.brand.title}</td>
+                    <td className="py-4 px-6">{product.category.title}</td>
+                    <td className="py-4 px-6">{product.price} €</td>
+                    <td className="py-4 px-6">{product.stock}</td>
+                    <td className="py-4 px-6">
+                      {product.isAvailable ? (
+                        <div className="flex items-center">
+                          <div className="bg-green-500 w-3 h-3 rounded-full mr-2"></div>
+                          <span>Disponible</span>
+                        </div>
+                      ) : (
+                        <div className="flex items-center">
+                          <div className="bg-red-600 w-3 h-3 rounded-full mr-2"></div>
+                          <span>Non Disponible</span>
+                        </div>
+                      )}
+                    </td>
+                    <td className="py-4 px-6 text-right">
+                      <a
+                        href="#"
+                        className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                      >
+                        Editer
+                      </a>
+                    </td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>

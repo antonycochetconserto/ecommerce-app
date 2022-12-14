@@ -2,15 +2,20 @@ import { API, graphqlOperation } from 'aws-amplify';
 import { createProduct } from '../../../graphql/mutations';
 import { TProduct } from '../../../ts/types/product/tproduct';
 import { useForm } from 'react-hook-form';
+import { useEffect, useState } from 'react';
+import { listBrands, listCategories } from '../../../graphql/queries';
+import { TCategory } from '../../../ts/types/category/tcategory';
 
 import DashboardFormInput from '../../common/form/Input/Input';
 import DashboardFormTextArea from '../../common/form/Textarea';
 import DashboardFormFile from '../../common/form/Input/InputFile';
 import DashboardFormCheckboxHelperText from '../../common/form/Checkbox/HelperText';
 import DashboardHomeReactSelect from '../../common/form/Select/ReactSelect';
-import DashboardFormMultipleCheckbox from '../../common/form/Checkbox/MultipleCheckbox';
+import { TBrand } from '../../../ts/types/brand/tbrand';
 
 export default function AddProduct() {
+  const [categories, setCategories] = useState<TCategory[]>([]);
+  const [brands, setBrands] = useState<TBrand[]>([]);
   const {
     register,
     handleSubmit,
@@ -20,13 +25,26 @@ export default function AddProduct() {
   } = useForm<TProduct>();
   const onSubmit = handleSubmit((data) => addProduct(data));
 
+  useEffect(() => {
+    fetchCategories();
+    fetchBrands();
+  }, []);
+
+  async function fetchCategories() {
+    const apiData: any = await API.graphql({ query: listCategories });
+    setCategories(apiData.data.listCategories.items);
+  }
+
+  async function fetchBrands() {
+    const apiData: any = await API.graphql({ query: listBrands });
+    setBrands(apiData.data.listBrands.items);
+  }
+
   const addProduct = async (product: TProduct) => {
-    console.log(product);
     try {
       if (!product.title) return;
       await API.graphql(graphqlOperation(createProduct, { input: product }));
       reset();
-      console.log(product);
     } catch (err) {
       console.log('error creating product:', err);
     }
@@ -79,6 +97,7 @@ export default function AddProduct() {
               labelTitle={'Choix de la marque'}
               value={'productBrandId'}
               placeholder={'Example&Co'}
+              data={brands}
             />
             <div className="flex flex-row justify-between space-x-8">
               <div className="flex flex-col w-6/12">
@@ -130,10 +149,13 @@ export default function AddProduct() {
             </div>
           </div>
           <div className="flex flex-col space-y-4 w-4/12">
-            <DashboardFormMultipleCheckbox
+            <DashboardHomeReactSelect
               register={register}
-              labelTitle={'Choissisez la/les catégorie(s):'}
-              value={'category'}
+              control={control}
+              labelTitle={'Choix de la catégorie'}
+              value={'productCategoryId'}
+              placeholder={'Example&Co'}
+              data={categories}
             />
             <div className="flex items-center justify-center w-full">
               <div className="flex flex-col w-full">
@@ -151,9 +173,11 @@ export default function AddProduct() {
                 <DashboardFormCheckboxHelperText
                   register={register}
                   errors={errors}
-                  labelTitle={'Catégorie'}
+                  labelTitle={'Disponibilité du produit'}
+                  textDescription={
+                    'Permet de mentionner la disponibilité du produit'
+                  }
                   value={'isAvailable'}
-                  placeholder={'La Catégorie du produit'}
                 />
               </div>
             </div>

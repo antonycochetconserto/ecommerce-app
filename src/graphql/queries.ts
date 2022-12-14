@@ -21,7 +21,9 @@ export const getProduct = /* GraphQL */ `
       category {
         id
         title
-        description
+        subTitle
+        fullDescription
+        isAvailable
         products {
           nextToken
         }
@@ -31,8 +33,10 @@ export const getProduct = /* GraphQL */ `
       brand {
         id
         title
-        description
+        subTitle
+        fullDescription
         image
+        isAvailable
         products {
           nextToken
         }
@@ -72,15 +76,19 @@ export const listProducts = /* GraphQL */ `
         category {
           id
           title
-          description
+          subTitle
+          fullDescription
+          isAvailable
           createdAt
           updatedAt
         }
         brand {
           id
           title
-          description
+          subTitle
+          fullDescription
           image
+          isAvailable
           createdAt
           updatedAt
         }
@@ -100,7 +108,9 @@ export const getCategory = /* GraphQL */ `
     getCategory(id: $id) {
       id
       title
-      description
+      subTitle
+      fullDescription
+      isAvailable
       products {
         items {
           id
@@ -140,7 +150,9 @@ export const listCategories = /* GraphQL */ `
       items {
         id
         title
-        description
+        subTitle
+        fullDescription
+        isAvailable
         products {
           nextToken
         }
@@ -156,8 +168,10 @@ export const getBrand = /* GraphQL */ `
     getBrand(id: $id) {
       id
       title
-      description
+      subTitle
+      fullDescription
       image
+      isAvailable
       products {
         items {
           id
@@ -197,8 +211,10 @@ export const listBrands = /* GraphQL */ `
       items {
         id
         title
-        description
+        subTitle
+        fullDescription
         image
+        isAvailable
         products {
           nextToken
         }

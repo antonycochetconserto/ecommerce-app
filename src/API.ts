@@ -160,7 +160,9 @@ export type Category = {
   __typename: "Category",
   id: string,
   title: string,
-  description?: string | null,
+  subTitle?: string | null,
+  fullDescription?: string | null,
+  isAvailable?: boolean | null,
   products?: ModelProductConnection | null,
   createdAt: string,
   updatedAt: string,
@@ -176,8 +178,10 @@ export type Brand = {
   __typename: "Brand",
   id: string,
   title: string,
-  description?: string | null,
+  subTitle?: string | null,
+  fullDescription?: string | null,
   image?: string | null,
+  isAvailable?: boolean | null,
   products?: ModelProductConnection | null,
   createdAt: string,
   updatedAt: string,
@@ -210,12 +214,16 @@ export type DeleteProductInput = {
 export type CreateCategoryInput = {
   id?: string | null,
   title: string,
-  description?: string | null,
+  subTitle?: string | null,
+  fullDescription?: string | null,
+  isAvailable?: boolean | null,
 };
 
 export type ModelCategoryConditionInput = {
   title?: ModelStringInput | null,
-  description?: ModelStringInput | null,
+  subTitle?: ModelStringInput | null,
+  fullDescription?: ModelStringInput | null,
+  isAvailable?: ModelBooleanInput | null,
   and?: Array< ModelCategoryConditionInput | null > | null,
   or?: Array< ModelCategoryConditionInput | null > | null,
   not?: ModelCategoryConditionInput | null,
@@ -224,7 +232,9 @@ export type ModelCategoryConditionInput = {
 export type UpdateCategoryInput = {
   id: string,
   title?: string | null,
-  description?: string | null,
+  subTitle?: string | null,
+  fullDescription?: string | null,
+  isAvailable?: boolean | null,
 };
 
 export type DeleteCategoryInput = {
@@ -234,14 +244,18 @@ export type DeleteCategoryInput = {
 export type CreateBrandInput = {
   id?: string | null,
   title: string,
-  description?: string | null,
+  subTitle?: string | null,
+  fullDescription?: string | null,
   image?: string | null,
+  isAvailable?: boolean | null,
 };
 
 export type ModelBrandConditionInput = {
   title?: ModelStringInput | null,
-  description?: ModelStringInput | null,
+  subTitle?: ModelStringInput | null,
+  fullDescription?: ModelStringInput | null,
   image?: ModelStringInput | null,
+  isAvailable?: ModelBooleanInput | null,
   and?: Array< ModelBrandConditionInput | null > | null,
   or?: Array< ModelBrandConditionInput | null > | null,
   not?: ModelBrandConditionInput | null,
@@ -250,8 +264,10 @@ export type ModelBrandConditionInput = {
 export type UpdateBrandInput = {
   id: string,
   title?: string | null,
-  description?: string | null,
+  subTitle?: string | null,
+  fullDescription?: string | null,
   image?: string | null,
+  isAvailable?: boolean | null,
 };
 
 export type DeleteBrandInput = {
@@ -284,7 +300,9 @@ export type ModelProductFilterInput = {
 export type ModelCategoryFilterInput = {
   id?: ModelIDInput | null,
   title?: ModelStringInput | null,
-  description?: ModelStringInput | null,
+  subTitle?: ModelStringInput | null,
+  fullDescription?: ModelStringInput | null,
+  isAvailable?: ModelBooleanInput | null,
   and?: Array< ModelCategoryFilterInput | null > | null,
   or?: Array< ModelCategoryFilterInput | null > | null,
   not?: ModelCategoryFilterInput | null,
@@ -299,8 +317,10 @@ export type ModelCategoryConnection = {
 export type ModelBrandFilterInput = {
   id?: ModelIDInput | null,
   title?: ModelStringInput | null,
-  description?: ModelStringInput | null,
+  subTitle?: ModelStringInput | null,
+  fullDescription?: ModelStringInput | null,
   image?: ModelStringInput | null,
+  isAvailable?: ModelBooleanInput | null,
   and?: Array< ModelBrandFilterInput | null > | null,
   or?: Array< ModelBrandFilterInput | null > | null,
   not?: ModelBrandFilterInput | null,
@@ -392,7 +412,9 @@ export type ModelSubscriptionBooleanInput = {
 export type ModelSubscriptionCategoryFilterInput = {
   id?: ModelSubscriptionIDInput | null,
   title?: ModelSubscriptionStringInput | null,
-  description?: ModelSubscriptionStringInput | null,
+  subTitle?: ModelSubscriptionStringInput | null,
+  fullDescription?: ModelSubscriptionStringInput | null,
+  isAvailable?: ModelSubscriptionBooleanInput | null,
   and?: Array< ModelSubscriptionCategoryFilterInput | null > | null,
   or?: Array< ModelSubscriptionCategoryFilterInput | null > | null,
 };
@@ -400,8 +422,10 @@ export type ModelSubscriptionCategoryFilterInput = {
 export type ModelSubscriptionBrandFilterInput = {
   id?: ModelSubscriptionIDInput | null,
   title?: ModelSubscriptionStringInput | null,
-  description?: ModelSubscriptionStringInput | null,
+  subTitle?: ModelSubscriptionStringInput | null,
+  fullDescription?: ModelSubscriptionStringInput | null,
   image?: ModelSubscriptionStringInput | null,
+  isAvailable?: ModelSubscriptionBooleanInput | null,
   and?: Array< ModelSubscriptionBrandFilterInput | null > | null,
   or?: Array< ModelSubscriptionBrandFilterInput | null > | null,
 };
@@ -431,7 +455,9 @@ export type CreateProductMutation = {
       __typename: "Category",
       id: string,
       title: string,
-      description?: string | null,
+      subTitle?: string | null,
+      fullDescription?: string | null,
+      isAvailable?: boolean | null,
       products?:  {
         __typename: "ModelProductConnection",
         nextToken?: string | null,
@@ -443,8 +469,10 @@ export type CreateProductMutation = {
       __typename: "Brand",
       id: string,
       title: string,
-      description?: string | null,
+      subTitle?: string | null,
+      fullDescription?: string | null,
       image?: string | null,
+      isAvailable?: boolean | null,
       products?:  {
         __typename: "ModelProductConnection",
         nextToken?: string | null,
@@ -486,7 +514,9 @@ export type UpdateProductMutation = {
       __typename: "Category",
       id: string,
       title: string,
-      description?: string | null,
+      subTitle?: string | null,
+      fullDescription?: string | null,
+      isAvailable?: boolean | null,
       products?:  {
         __typename: "ModelProductConnection",
         nextToken?: string | null,
@@ -498,8 +528,10 @@ export type UpdateProductMutation = {
       __typename: "Brand",
       id: string,
       title: string,
-      description?: string | null,
+      subTitle?: string | null,
+      fullDescription?: string | null,
       image?: string | null,
+      isAvailable?: boolean | null,
       products?:  {
         __typename: "ModelProductConnection",
         nextToken?: string | null,
@@ -541,7 +573,9 @@ export type DeleteProductMutation = {
       __typename: "Category",
       id: string,
       title: string,
-      description?: string | null,
+      subTitle?: string | null,
+      fullDescription?: string | null,
+      isAvailable?: boolean | null,
       products?:  {
         __typename: "ModelProductConnection",
         nextToken?: string | null,
@@ -553,8 +587,10 @@ export type DeleteProductMutation = {
       __typename: "Brand",
       id: string,
       title: string,
-      description?: string | null,
+      subTitle?: string | null,
+      fullDescription?: string | null,
       image?: string | null,
+      isAvailable?: boolean | null,
       products?:  {
         __typename: "ModelProductConnection",
         nextToken?: string | null,
@@ -581,7 +617,9 @@ export type CreateCategoryMutation = {
     __typename: "Category",
     id: string,
     title: string,
-    description?: string | null,
+    subTitle?: string | null,
+    fullDescription?: string | null,
+    isAvailable?: boolean | null,
     products?:  {
       __typename: "ModelProductConnection",
       items:  Array< {
@@ -623,7 +661,9 @@ export type UpdateCategoryMutation = {
     __typename: "Category",
     id: string,
     title: string,
-    description?: string | null,
+    subTitle?: string | null,
+    fullDescription?: string | null,
+    isAvailable?: boolean | null,
     products?:  {
       __typename: "ModelProductConnection",
       items:  Array< {
@@ -665,7 +705,9 @@ export type DeleteCategoryMutation = {
     __typename: "Category",
     id: string,
     title: string,
-    description?: string | null,
+    subTitle?: string | null,
+    fullDescription?: string | null,
+    isAvailable?: boolean | null,
     products?:  {
       __typename: "ModelProductConnection",
       items:  Array< {
@@ -707,8 +749,10 @@ export type CreateBrandMutation = {
     __typename: "Brand",
     id: string,
     title: string,
-    description?: string | null,
+    subTitle?: string | null,
+    fullDescription?: string | null,
     image?: string | null,
+    isAvailable?: boolean | null,
     products?:  {
       __typename: "ModelProductConnection",
       items:  Array< {
@@ -750,8 +794,10 @@ export type UpdateBrandMutation = {
     __typename: "Brand",
     id: string,
     title: string,
-    description?: string | null,
+    subTitle?: string | null,
+    fullDescription?: string | null,
     image?: string | null,
+    isAvailable?: boolean | null,
     products?:  {
       __typename: "ModelProductConnection",
       items:  Array< {
@@ -793,8 +839,10 @@ export type DeleteBrandMutation = {
     __typename: "Brand",
     id: string,
     title: string,
-    description?: string | null,
+    subTitle?: string | null,
+    fullDescription?: string | null,
     image?: string | null,
+    isAvailable?: boolean | null,
     products?:  {
       __typename: "ModelProductConnection",
       items:  Array< {
@@ -850,7 +898,9 @@ export type GetProductQuery = {
       __typename: "Category",
       id: string,
       title: string,
-      description?: string | null,
+      subTitle?: string | null,
+      fullDescription?: string | null,
+      isAvailable?: boolean | null,
       products?:  {
         __typename: "ModelProductConnection",
         nextToken?: string | null,
@@ -862,8 +912,10 @@ export type GetProductQuery = {
       __typename: "Brand",
       id: string,
       title: string,
-      description?: string | null,
+      subTitle?: string | null,
+      fullDescription?: string | null,
       image?: string | null,
+      isAvailable?: boolean | null,
       products?:  {
         __typename: "ModelProductConnection",
         nextToken?: string | null,
@@ -908,7 +960,9 @@ export type ListProductsQuery = {
         __typename: "Category",
         id: string,
         title: string,
-        description?: string | null,
+        subTitle?: string | null,
+        fullDescription?: string | null,
+        isAvailable?: boolean | null,
         createdAt: string,
         updatedAt: string,
       } | null,
@@ -916,8 +970,10 @@ export type ListProductsQuery = {
         __typename: "Brand",
         id: string,
         title: string,
-        description?: string | null,
+        subTitle?: string | null,
+        fullDescription?: string | null,
         image?: string | null,
+        isAvailable?: boolean | null,
         createdAt: string,
         updatedAt: string,
       } | null,
@@ -941,7 +997,9 @@ export type GetCategoryQuery = {
     __typename: "Category",
     id: string,
     title: string,
-    description?: string | null,
+    subTitle?: string | null,
+    fullDescription?: string | null,
+    isAvailable?: boolean | null,
     products?:  {
       __typename: "ModelProductConnection",
       items:  Array< {
@@ -986,7 +1044,9 @@ export type ListCategoriesQuery = {
       __typename: "Category",
       id: string,
       title: string,
-      description?: string | null,
+      subTitle?: string | null,
+      fullDescription?: string | null,
+      isAvailable?: boolean | null,
       products?:  {
         __typename: "ModelProductConnection",
         nextToken?: string | null,
@@ -1007,8 +1067,10 @@ export type GetBrandQuery = {
     __typename: "Brand",
     id: string,
     title: string,
-    description?: string | null,
+    subTitle?: string | null,
+    fullDescription?: string | null,
     image?: string | null,
+    isAvailable?: boolean | null,
     products?:  {
       __typename: "ModelProductConnection",
       items:  Array< {
@@ -1053,8 +1115,10 @@ export type ListBrandsQuery = {
       __typename: "Brand",
       id: string,
       title: string,
-      description?: string | null,
+      subTitle?: string | null,
+      fullDescription?: string | null,
       image?: string | null,
+      isAvailable?: boolean | null,
       products?:  {
         __typename: "ModelProductConnection",
         nextToken?: string | null,
@@ -1090,7 +1154,9 @@ export type OnCreateProductSubscription = {
       __typename: "Category",
       id: string,
       title: string,
-      description?: string | null,
+      subTitle?: string | null,
+      fullDescription?: string | null,
+      isAvailable?: boolean | null,
       products?:  {
         __typename: "ModelProductConnection",
         nextToken?: string | null,
@@ -1102,8 +1168,10 @@ export type OnCreateProductSubscription = {
       __typename: "Brand",
       id: string,
       title: string,
-      description?: string | null,
+      subTitle?: string | null,
+      fullDescription?: string | null,
       image?: string | null,
+      isAvailable?: boolean | null,
       products?:  {
         __typename: "ModelProductConnection",
         nextToken?: string | null,
@@ -1144,7 +1212,9 @@ export type OnUpdateProductSubscription = {
       __typename: "Category",
       id: string,
       title: string,
-      description?: string | null,
+      subTitle?: string | null,
+      fullDescription?: string | null,
+      isAvailable?: boolean | null,
       products?:  {
         __typename: "ModelProductConnection",
         nextToken?: string | null,
@@ -1156,8 +1226,10 @@ export type OnUpdateProductSubscription = {
       __typename: "Brand",
       id: string,
       title: string,
-      description?: string | null,
+      subTitle?: string | null,
+      fullDescription?: string | null,
       image?: string | null,
+      isAvailable?: boolean | null,
       products?:  {
         __typename: "ModelProductConnection",
         nextToken?: string | null,
@@ -1198,7 +1270,9 @@ export type OnDeleteProductSubscription = {
       __typename: "Category",
       id: string,
       title: string,
-      description?: string | null,
+      subTitle?: string | null,
+      fullDescription?: string | null,
+      isAvailable?: boolean | null,
       products?:  {
         __typename: "ModelProductConnection",
         nextToken?: string | null,
@@ -1210,8 +1284,10 @@ export type OnDeleteProductSubscription = {
       __typename: "Brand",
       id: string,
       title: string,
-      description?: string | null,
+      subTitle?: string | null,
+      fullDescription?: string | null,
       image?: string | null,
+      isAvailable?: boolean | null,
       products?:  {
         __typename: "ModelProductConnection",
         nextToken?: string | null,
@@ -1237,7 +1313,9 @@ export type OnCreateCategorySubscription = {
     __typename: "Category",
     id: string,
     title: string,
-    description?: string | null,
+    subTitle?: string | null,
+    fullDescription?: string | null,
+    isAvailable?: boolean | null,
     products?:  {
       __typename: "ModelProductConnection",
       items:  Array< {
@@ -1278,7 +1356,9 @@ export type OnUpdateCategorySubscription = {
     __typename: "Category",
     id: string,
     title: string,
-    description?: string | null,
+    subTitle?: string | null,
+    fullDescription?: string | null,
+    isAvailable?: boolean | null,
     products?:  {
       __typename: "ModelProductConnection",
       items:  Array< {
@@ -1319,7 +1399,9 @@ export type OnDeleteCategorySubscription = {
     __typename: "Category",
     id: string,
     title: string,
-    description?: string | null,
+    subTitle?: string | null,
+    fullDescription?: string | null,
+    isAvailable?: boolean | null,
     products?:  {
       __typename: "ModelProductConnection",
       items:  Array< {
@@ -1360,8 +1442,10 @@ export type OnCreateBrandSubscription = {
     __typename: "Brand",
     id: string,
     title: string,
-    description?: string | null,
+    subTitle?: string | null,
+    fullDescription?: string | null,
     image?: string | null,
+    isAvailable?: boolean | null,
     products?:  {
       __typename: "ModelProductConnection",
       items:  Array< {
@@ -1402,8 +1486,10 @@ export type OnUpdateBrandSubscription = {
     __typename: "Brand",
     id: string,
     title: string,
-    description?: string | null,
+    subTitle?: string | null,
+    fullDescription?: string | null,
     image?: string | null,
+    isAvailable?: boolean | null,
     products?:  {
       __typename: "ModelProductConnection",
       items:  Array< {
@@ -1444,8 +1530,10 @@ export type OnDeleteBrandSubscription = {
     __typename: "Brand",
     id: string,
     title: string,
-    description?: string | null,
+    subTitle?: string | null,
+    fullDescription?: string | null,
     image?: string | null,
+    isAvailable?: boolean | null,
     products?:  {
       __typename: "ModelProductConnection",
       items:  Array< {
