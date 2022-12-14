@@ -1,5 +1,6 @@
 import { UserCircleIcon } from '@heroicons/react/24/solid';
 import Link from 'next/link';
+import DropdownProfile from './DropdownProfile';
 
 export default function NavbarDashboard() {
   return (
@@ -17,9 +18,7 @@ export default function NavbarDashboard() {
             </span>
           </Link>
           <div className="flex items-center">
-            <a href="#" className="text-sm text-gray-800 hover:underline">
-              <UserCircleIcon className="w-8 h-8" />
-            </a>
+            <DropdownProfile />
           </div>
         </div>
       </nav>

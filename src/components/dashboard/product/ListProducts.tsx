@@ -16,8 +16,6 @@ export default function ListProducts() {
     setProducts(apiData.data.listProducts.items);
   }
 
-  console.log(products);
-
   return (
     <>
       <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl px-4 md:px-6 py-12">
