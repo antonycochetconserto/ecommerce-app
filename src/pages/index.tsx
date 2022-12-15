@@ -2,6 +2,7 @@ import { Auth } from 'aws-amplify';
 import { useEffect, useState } from 'react';
 import Header from '../components/home/header';
 import Navbar from '../components/home/navbar';
+import SectionCategory from '../components/home/section/Category';
 
 export default function Home() {
   const [user, setUser] = useState<{ username: string }>({ username: '' });
@@ -23,7 +24,10 @@ export default function Home() {
   return (
     <>
       <Navbar user={user} />
-      <Header />
+      <div className="space-y-28">
+        <Header />
+        <SectionCategory />
+      </div>
     </>
   );
 }

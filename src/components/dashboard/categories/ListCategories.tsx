@@ -22,8 +22,8 @@ export default function ListCategories() {
   }
 
   return (
-    <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl px-4 md:px-6 py-12">
-      <div className="flex flex-row justify-between pb-8 w-full">
+    <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl px-4 md:px-6 py-6">
+      <div className="flex flex-row justify-between pb-6 w-full">
         <h3 className="text-3xl tracking-tighter font-bold text-slate-800">
           Liste des catégories
         </h3>
