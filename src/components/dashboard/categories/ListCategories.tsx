@@ -58,32 +58,33 @@ export default function ListCategories() {
           <tbody>
             {categories.map((category) => {
               return (
-                <>
-                  <tr className="bg-white border-b last:border-none">
-                    <th
-                      scope="row"
-                      className="py-2 px-6 font-medium text-gray-900 whitespace-nowrap"
-                    >
-                      <td className="flex flex-col">
-                        <p>{category.title}</p>
-                        <p className="font-light">{category.subTitle}</p>
-                      </td>
-                    </th>
-                    <td className="py-4 px-6">{category.fullDescription}</td>
-                    <td className="py-4 px-6">8 produits</td>
-                    <td className="py-4 px-6">
-                      <div className="flex items-center">
-                        <div className="h-2.5 w-2.5 rounded-full bg-green-400 mr-2"></div>
-                        {category.isAvailable ? 'Online' : 'Offline'}
-                      </div>
-                    </td>
-                    <td className="py-4 px-6 text-right">
-                      <a href="#" className="font-medium text-blue-600">
-                        Editer
-                      </a>
-                    </td>
-                  </tr>
-                </>
+                <tr
+                  key={category.id}
+                  className="bg-white border-b last:border-none"
+                >
+                  <th
+                    scope="row"
+                    className="py-2 px-6 font-medium text-gray-900 whitespace-nowrap"
+                  >
+                    <div className="flex flex-col">
+                      <p>{category.title}</p>
+                      <p className="font-light">{category.subTitle}</p>
+                    </div>
+                  </th>
+                  <td className="py-4 px-6">{category.fullDescription}</td>
+                  <td className="py-4 px-6">8 produits</td>
+                  <td className="py-4 px-6">
+                    <div className="flex items-center">
+                      <div className="h-2.5 w-2.5 rounded-full bg-green-400 mr-2"></div>
+                      {category.isAvailable ? 'Online' : 'Offline'}
+                    </div>
+                  </td>
+                  <td className="py-4 px-6 text-right">
+                    <a href="#" className="font-medium text-blue-600">
+                      Editer
+                    </a>
+                  </td>
+                </tr>
               );
             })}
           </tbody>
