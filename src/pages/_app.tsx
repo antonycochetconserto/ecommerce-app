@@ -9,7 +9,7 @@ Amplify.configure(awsconfig);
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <UserContext.Provider value={getAuthentificatedUser()}>
-      <Component {...pageProps} />;
+      <Component {...pageProps} />
     </UserContext.Provider>
   );
 }

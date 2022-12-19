@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { listProducts } from '../../../graphql/queries';
 import { TProduct } from '../../types/product/tproduct';
 
-export async function fetchProducts() {
+export function fetchProducts() {
   const [products, setProducts] = useState<TProduct[]>([]);
 
   const getProducts = async () => {

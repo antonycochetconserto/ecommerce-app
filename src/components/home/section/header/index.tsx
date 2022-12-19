@@ -1,28 +1,20 @@
 export default function Header() {
   return (
     <>
-      <div className="max-w-7xl mx-auto space-y-24 px-12">
-        <h1 className="text-7xl font-bold tracking-tighter text-gray-900 text-center mt-24">
-          Brandii.
-        </h1>
-        <div className="flex flex-row justify-center space-x-12">
-          <div className="bg-slate-100 rounded-2xl w-4/12 h-96 overflow-hidden relative">
-            <img
-              className="w-full backdrop-contrast-150"
-              src="https://images.pexels.com/photos/4091883/pexels-photo-4091883.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
-            />
-          </div>
-          <div className="bg-slate-100 rounded-2xl w-4/12 h-96 overflow-hidden">
-            <img
-              className="w-full backdrop-contrast-150"
-              src="https://images.pexels.com/photos/6364034/pexels-photo-6364034.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
-            />
-          </div>
-          <div className="bg-slate-100 rounded-2xl w-4/12 h-96 overflow-hidden">
-            <img
-              className="w-full backdrop-contrast-150"
-              src="https://images.pexels.com/photos/4925894/pexels-photo-4925894.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
-            />
+      <div className="max-w-7xl mx-auto px-8 mb-16">
+        <div className="flex items-center py-8">
+          <img src="https://images.pexels.com/photos/8101596/pexels-photo-8101596.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" />
+          <div className="flex flex-col space-y-6 items-start ml-16">
+            <h1 className="-ml-2 text-8xl font-bold tracking-tighter bg-clip-text text-transparent bg-[conic-gradient(at_top_right,_var(--tw-gradient-stops))] from-cyan-100 via-violet-600 to-indigo-900">
+              Brandii.
+            </h1>
+            <h3 className="text-2xl tracking-tight text-gray-400">
+              Vivamus euismod facilisis urna, a sodales nulla viverra ultrices.
+              Nunc malesuada metus leo.
+            </h3>
+            <button className="bg-indigo-600 px-8 py-4 rounded-md text-white text-md font-medium">
+              Voir les produits
+            </button>
           </div>
         </div>
       </div>
