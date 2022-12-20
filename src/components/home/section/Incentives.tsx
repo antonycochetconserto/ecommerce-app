@@ -1,27 +1,6 @@
-import { TruckIcon } from '@heroicons/react/24/outline';
-import { Component } from 'react';
+import { ChatBubbleLeftRightIcon } from '@heroicons/react/24/solid';
 
 export default function SectionIncentives() {
-  const advantages: { icon: any; title: string; subtitle: string }[] = [
-    {
-      icon: <TruckIcon className="w-16 h-16 mb-6 text-gray-700" />,
-      title: 'Nullam quis consectetur massa',
-      subtitle:
-        'Quisque sollicitudin massa elit. Donec eget magna ut justo mattis lacinia non.',
-    },
-    {
-      icon: <TruckIcon className="w-16 h-16 mb-6 text-gray-700" />,
-      title: 'Nullam quis consectetur massa',
-      subtitle:
-        'Quisque sollicitudin massa elit. Donec eget magna ut justo mattis lacinia non.',
-    },
-    {
-      icon: <TruckIcon className="w-16 h-16 mb-6 text-gray-700" />,
-      title: 'Nullam quis consectetur massa',
-      subtitle:
-        'Quisque sollicitudin massa elit. Donec eget magna ut justo mattis lacinia non.',
-    },
-  ];
   return (
     <div className="max-w-7xl flex mx-auto px-8">
       <div className="flex flex-col py-36">
@@ -43,23 +22,43 @@ export default function SectionIncentives() {
             src="https://images.pexels.com/photos/8101550/pexels-photo-8101550.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
           />
         </div>
-        <ul className="flex flex-row space-x-12 justify-between mt-14">
-          {advantages.map((advantage, index) => {
-            return (
-              <li key={index} className="leading-5 w-3/12">
-                {advantage.icon}
-                <div className="space-y-2">
-                  <h4 className="text-gray-800 font-semibold text-sm">
-                    {advantage.title}
-                  </h4>
-                  <p className="text-gray-500 font-normal text-sm">
-                    {advantage.subtitle}
-                  </p>
-                </div>
-              </li>
-            );
-          })}
-        </ul>
+        <div className="flex flex-col text-slate-900 text-lg py-12">
+          <h3 className="font-semibold text-2xl tracking-tighter">
+            What people saying ?
+          </h3>
+          <ul className="flex flex-row justify-between space-x-20 mt-12">
+            <li className="w-4/12 text-slate-600">
+              <ChatBubbleLeftRightIcon className="w-8 h-8 mb-8 text-slate-400" />
+              <p className="font-normal mb-2 text-xl">
+                Mauris id augue sed lacus lacinia tempus placerat id eros. Cras
+                ligula lacus. Lacus lacinia tempus placerat id!
+              </p>
+              <p className="text-slate-800 font-bold tracking-tight">
+                Antony Cochet
+              </p>
+            </li>
+            <li className="w-4/12 text-slate-600">
+              <ChatBubbleLeftRightIcon className="w-8 h-8 mb-8 text-slate-400" />
+              <p className="font-normal mb-2 text-xl">
+                Mauris id augue sed lacus lacinia tempus placerat id eros. Cras
+                ligula lacus. Lacus lacinia tempus placerat id!
+              </p>
+              <p className="text-slate-800 font-bold tracking-tight">
+                Antony Cochet
+              </p>
+            </li>
+            <li className="w-4/12 text-slate-600">
+              <ChatBubbleLeftRightIcon className="w-8 h-8 mb-8 text-slate-400" />
+              <p className="font-normal mb-2 text-xl">
+                Mauris id augue sed lacus lacinia tempus placerat id eros. Cras
+                ligula lacus. Lacus lacinia tempus placerat id!
+              </p>
+              <p className="text-slate-800 font-bold tracking-tight">
+                Antony Cochet
+              </p>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   );

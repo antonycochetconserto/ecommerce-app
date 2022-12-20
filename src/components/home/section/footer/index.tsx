@@ -1,5 +1,3 @@
-import { ArrowRightIcon } from '@heroicons/react/20/solid';
-
 export default function Footer() {
   return (
     <div className="max-w-7xl mx-auto px-8 py-16">
@@ -53,7 +51,7 @@ export default function Footer() {
               </button>
             </div>
           </div>
-          <div className="bg-indigo-500 rounded-md flex flex-col justify-center items-center w-full text-gray-50 space-y-2 px-16 h-32">
+          <div className="bg-indigo-600 rounded-md flex flex-col justify-center items-center w-full text-gray-50 space-y-2 px-16 h-32">
             <h3 className="text-2xl font-bold tracking-tighter">
               Get early access
             </h3>
@@ -62,7 +60,7 @@ export default function Footer() {
               <span className="font-bold ml-1">Go now</span>
             </p>
           </div>
-          <div className="bg-slate-700 rounded-md flex flex-col justify-center items-center w-full text-gray-50 space-y-4 px-16 h-32">
+          <div className="bg-slate-800 rounded-md flex flex-col justify-center items-center w-full text-gray-50 space-y-4 px-16 h-32">
             <h3 className="text-xl font-light tracking-tighter text-center">
               Propulsé par <br />
               <span className="font-bold">BbResponsable</span>
