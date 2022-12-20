@@ -1,4 +1,6 @@
 import { ArrowRightIcon } from '@heroicons/react/20/solid';
+import React, { useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
 
 export default function SectionCategory() {
   const products: { img: string; title: string; subtitle: string }[] = [
@@ -19,10 +21,24 @@ export default function SectionCategory() {
     },
   ];
 
+  const ref = useRef(null);
+  const isInView = useInView(ref, {
+    once: true,
+    margin: '0px -0px -100px -0px',
+  });
+
   return (
     <div className="bg-gray-50/80">
       <div className="max-w-7xl flex justify-around mx-auto">
-        <div className="flex flex-col px-8 py-28">
+        <div
+          ref={ref}
+          style={{
+            transform: isInView ? 'none' : 'translateY(200px)',
+            opacity: isInView ? 1 : 0,
+            transition: 'all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s',
+          }}
+          className="flex flex-col px-8 py-28"
+        >
           <h3 className="text-2xl tracking-tighter text-gray-900 font-bold pb-8">
             Article de la collection
           </h3>
