@@ -24,7 +24,7 @@ export default function SectionIncentives() {
   ];
   return (
     <div className="max-w-7xl flex mx-auto px-8">
-      <div className="flex flex-col py-28">
+      <div className="flex flex-col py-36">
         <div className="flex items-center justify-between border-b pb-20">
           <div className="flex flex-col space-y-6 w-6/12">
             <h3 className="text-4xl tracking-tighter text-gray-800 font-bold leading-8">

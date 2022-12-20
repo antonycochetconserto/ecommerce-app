@@ -6,6 +6,7 @@ import UserContext from '../context/UserContext';
 import Banner from '../components/home/banner/index';
 import SectionIncentives from '../components/home/section/Incentives';
 import SectionPromotion from '../components/home/section/Promotion';
+import Footer from '../components/home/section/footer';
 
 export default function Home() {
   const user = useContext(UserContext);
@@ -17,6 +18,7 @@ export default function Home() {
       <SectionCategory />
       <SectionIncentives />
       <SectionPromotion />
+      <Footer />
     </>
   );
 }

@@ -1,3 +1,5 @@
+import { ArrowRightIcon } from '@heroicons/react/20/solid';
+
 export default function SectionCategory() {
   const products: { img: string; title: string; subtitle: string }[] = [
     {
@@ -33,9 +35,12 @@ export default function SectionCategory() {
                     <h4 className="text-gray-500 font-normal">
                       {product.title}
                     </h4>
-                    <p className="text-gray-800 font-semibold">
-                      {product.subtitle}
-                    </p>
+                    <div className="flex items-center space-x-2 hover:last:translate-x-2 transition duration-150">
+                      <p className="text-gray-800 font-semibold">
+                        {product.subtitle}
+                      </p>
+                      <ArrowRightIcon className="w-4 h-4 text-gray-900" />
+                    </div>
                   </div>
                 </div>
               );
