@@ -27,6 +27,8 @@ export default function SectionCategory() {
     margin: '-200px 0px -0px 0px',
   });
 
+  let timer = 0;
+
   return (
     <div className="bg-gray-50/80">
       <div className="max-w-7xl flex justify-around mx-auto">
@@ -43,13 +45,14 @@ export default function SectionCategory() {
           </h3>
           <div className="flex justify-between">
             {products.map((product, index) => {
-              index += 0.2;
+              timer += 0.3;
+              console.log(timer);
               return (
                 <motion.div
                   style={{
                     transform: isInView ? 'none' : 'translateY(200px)',
                     opacity: isInView ? 1 : 0,
-                    transition: `all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) ${index}s`,
+                    transition: `all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) ${timer}s`,
                   }}
                   key={index}
                   className="w-4/12 px-8 -ml-8"
