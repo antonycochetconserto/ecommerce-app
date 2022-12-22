@@ -25,7 +25,7 @@ export default function SectionIncentives() {
       author: 'Antony Cochet',
     },
   ];
-  let timer = 0;
+  let timer = 0.5;
 
   return (
     <div className="max-w-7xl flex mx-auto px-8">
