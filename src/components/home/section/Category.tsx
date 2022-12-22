@@ -1,23 +1,21 @@
 import { ArrowRightIcon } from '@heroicons/react/20/solid';
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
+import Link from 'next/link';
 
 export default function SectionCategory() {
-  const products: { img: string; title: string; subtitle: string }[] = [
+  const products: { img: string; title: string }[] = [
     {
       img: 'https://images.pexels.com/photos/8131589/pexels-photo-8131589.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load',
       title: 'Desk and Office',
-      subtitle: 'Work from accessoires',
     },
     {
       img: 'https://images.pexels.com/photos/8129909/pexels-photo-8129909.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load',
       title: 'Desk and Office',
-      subtitle: 'Work from accessoires',
     },
     {
       img: 'https://images.pexels.com/photos/4202325/pexels-photo-4202325.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load',
       title: 'Desk and Office',
-      subtitle: 'Work from accessoires',
     },
   ];
 
@@ -56,17 +54,24 @@ export default function SectionCategory() {
                   key={index}
                   className="w-4/12 px-8 -ml-8"
                 >
-                  <img className="rounded-md" src={product.img} />
+                  <Link href={`products/${index}`}>
+                    <img
+                      className="rounded-md hover:scale-105 transition duration-150"
+                      src={product.img}
+                    />
+                  </Link>
                   <div className="leading-5 mt-8">
                     <h4 className="text-gray-500 font-normal">
                       {product.title}
                     </h4>
-                    <div className="flex items-center space-x-2 hover:last:translate-x-2 transition duration-150">
-                      <p className="text-gray-800 font-semibold">
-                        {product.subtitle}
-                      </p>
-                      <ArrowRightIcon className="w-4 h-4 text-gray-900" />
-                    </div>
+                    <Link href={`products/${index}`}>
+                      <div className="inline-flex items-center space-x-2 text-slate-900">
+                        <p className="font-semibold">
+                          Voir le produit en détail
+                        </p>
+                        <ArrowRightIcon className="w-4 h-4" />
+                      </div>
+                    </Link>
                   </div>
                 </motion.div>
               );

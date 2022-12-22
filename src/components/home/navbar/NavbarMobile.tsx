@@ -8,19 +8,13 @@ interface menuInterface {
     categories: {
       id: string;
       name: string;
-      featured: {
+      products: {
         name: string;
         href: string;
         imageSrc: string;
         imageAlt: string;
       }[];
-      sections: {
-        id: string;
-        name: string;
-        items: { name: string; href: string }[];
-      }[];
     }[];
-    pages: { name: string; href: string }[];
   };
   classNames: (...classes: string[]) => string;
   open: boolean;
@@ -103,7 +97,7 @@ export default function NavbarMobile({
                         className="space-y-10 px-4 pt-10 pb-8"
                       >
                         <div className="grid grid-cols-2 gap-x-4">
-                          {category.featured.map((item) => (
+                          {category.products.map((item) => (
                             <div
                               key={item.name}
                               className="group relative text-sm"
@@ -125,55 +119,13 @@ export default function NavbarMobile({
                                 />
                                 {item.name}
                               </a>
-                              <p aria-hidden="true" className="mt-1">
-                                Shop now
-                              </p>
                             </div>
                           ))}
                         </div>
-                        {category.sections.map((section) => (
-                          <div key={section.name}>
-                            <p
-                              id={`${category.id}-${section.id}-heading-mobile`}
-                              className="font-medium text-gray-900"
-                            >
-                              {section.name}
-                            </p>
-                            <ul
-                              role="list"
-                              aria-labelledby={`${category.id}-${section.id}-heading-mobile`}
-                              className="mt-6 flex flex-col space-y-6"
-                            >
-                              {section.items.map((item) => (
-                                <li key={item.name} className="flow-root">
-                                  <a
-                                    href={item.href}
-                                    className="-m-2 block p-2 text-gray-500"
-                                  >
-                                    {item.name}
-                                  </a>
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                        ))}
                       </Tab.Panel>
                     ))}
                   </Tab.Panels>
                 </Tab.Group>
-
-                <div className="space-y-6 border-t border-gray-200 py-6 px-4">
-                  {navigation.pages.map((page) => (
-                    <div key={page.name} className="flow-root">
-                      <a
-                        href={page.href}
-                        className="-m-2 block p-2 font-medium text-gray-900"
-                      >
-                        {page.name}
-                      </a>
-                    </div>
-                  ))}
-                </div>
 
                 <div className="space-y-6 border-t border-gray-200 py-6 px-4">
                   {user.username ? (

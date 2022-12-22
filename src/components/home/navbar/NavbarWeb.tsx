@@ -1,30 +1,25 @@
 import Link from 'next/link';
-import { Dispatch, Fragment, SetStateAction } from 'react';
+import { Dispatch, Fragment, SetStateAction, useState } from 'react';
 import { Popover, Transition } from '@headlessui/react';
 import {
   Bars3Icon,
   MagnifyingGlassIcon,
   ShoppingBagIcon,
 } from '@heroicons/react/24/outline';
+import ShoppingCart from '../shopping-cart/Index';
 
 interface menuInterface {
   navigation: {
     categories: {
       id: string;
       name: string;
-      featured: {
+      products: {
         name: string;
         href: string;
         imageSrc: string;
         imageAlt: string;
       }[];
-      sections: {
-        id: string;
-        name: string;
-        items: { name: string; href: string }[];
-      }[];
     }[];
-    pages: { name: string; href: string }[];
   };
   classNames: (...classes: string[]) => string;
   setOpen: Dispatch<SetStateAction<boolean>>;
@@ -39,6 +34,11 @@ export default function NavbarWeb({
   user,
   signOut,
 }: menuInterface) {
+  let [isOpen, setIsOpen] = useState(false);
+
+  function openModal() {
+    setIsOpen(true);
+  }
   return (
     <header className="relative bg-white z-10">
       <nav aria-label="Top" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -55,7 +55,7 @@ export default function NavbarWeb({
 
             {/* Logo */}
             <div className="ml-4 flex lg:ml-0">
-              <a href="#">
+              <a href="/">
                 <span className="sr-only">Your Company</span>
                 <img
                   className="h-8 w-auto"
@@ -104,8 +104,8 @@ export default function NavbarWeb({
                             <div className="relative bg-white">
                               <div className="mx-auto max-w-7xl px-8">
                                 <div className="grid grid-cols-2 gap-y-10 gap-x-8 py-16">
-                                  <div className="col-start-2 grid grid-cols-2 gap-x-8">
-                                    {category.featured.map((item) => (
+                                  <div className="col-start-1 grid grid-cols-3 gap-x-8">
+                                    {category.products.map((item) => (
                                       <div
                                         key={item.name}
                                         className="group relative text-base sm:text-sm"
@@ -119,7 +119,7 @@ export default function NavbarWeb({
                                         </div>
                                         <a
                                           href={item.href}
-                                          className="mt-6 block font-medium text-gray-900"
+                                          className="mt-4 block font-medium text-gray-900"
                                         >
                                           <span
                                             className="absolute inset-0 z-10"
@@ -127,40 +127,6 @@ export default function NavbarWeb({
                                           />
                                           {item.name}
                                         </a>
-                                        <p aria-hidden="true" className="mt-1">
-                                          Shop now
-                                        </p>
-                                      </div>
-                                    ))}
-                                  </div>
-                                  <div className="row-start-1 grid grid-cols-3 gap-y-10 gap-x-8 text-sm">
-                                    {category.sections.map((section) => (
-                                      <div key={section.name}>
-                                        <p
-                                          id={`${section.name}-heading`}
-                                          className="font-medium text-gray-900"
-                                        >
-                                          {section.name}
-                                        </p>
-                                        <ul
-                                          role="list"
-                                          aria-labelledby={`${section.name}-heading`}
-                                          className="mt-6 space-y-6 sm:mt-4 sm:space-y-4"
-                                        >
-                                          {section.items.map((item) => (
-                                            <li
-                                              key={item.name}
-                                              className="flex"
-                                            >
-                                              <a
-                                                href={item.href}
-                                                className="hover:text-gray-800"
-                                              >
-                                                {item.name}
-                                              </a>
-                                            </li>
-                                          ))}
-                                        </ul>
                                       </div>
                                     ))}
                                   </div>
@@ -172,16 +138,6 @@ export default function NavbarWeb({
                       </>
                     )}
                   </Popover>
-                ))}
-
-                {navigation.pages.map((page) => (
-                  <a
-                    key={page.name}
-                    href={page.href}
-                    className="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800"
-                  >
-                    {page.name}
-                  </a>
                 ))}
               </div>
             </Popover.Group>
@@ -230,17 +186,12 @@ export default function NavbarWeb({
                 </a>
               </div>
 
-              {/* Search */}
-              <div className="flex lg:ml-6">
-                <a href="#" className="p-2 text-gray-400 hover:text-gray-500">
-                  <span className="sr-only">Search</span>
-                  <MagnifyingGlassIcon className="h-6 w-6" aria-hidden="true" />
-                </a>
-              </div>
-
               {/* Cart */}
               <div className="ml-4 flow-root lg:ml-6">
-                <a href="#" className="group -m-2 flex items-center p-2">
+                <button
+                  onClick={openModal}
+                  className="group -m-2 flex items-center p-2"
+                >
                   <ShoppingBagIcon
                     className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
                     aria-hidden="true"
@@ -249,8 +200,9 @@ export default function NavbarWeb({
                     0
                   </span>
                   <span className="sr-only">items in cart, view bag</span>
-                </a>
+                </button>
               </div>
+              {isOpen && <ShoppingCart setIsOpen={setIsOpen} isOpen={isOpen} />}
             </div>
           </div>
         </div>

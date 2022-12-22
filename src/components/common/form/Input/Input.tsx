@@ -3,7 +3,7 @@ import Label from '../Label/label';
 interface IDashboardFormInput {
   register: any;
   errors: any;
-  labelTitle: string;
+  labelTitle?: string | undefined;
   value: string;
   placeholder: string;
   isRequired: boolean;
@@ -20,8 +20,12 @@ export default function DashboardFormInput({
   type,
 }: IDashboardFormInput) {
   return (
-    <div>
-      <Label labelTitle={labelTitle} isRequired={isRequired} />
+    <>
+      {labelTitle ? (
+        <Label labelTitle={labelTitle} isRequired={isRequired} />
+      ) : (
+        <></>
+      )}
       <input
         type={type}
         min={0}
@@ -33,6 +37,6 @@ export default function DashboardFormInput({
         placeholder={placeholder}
         {...register(value, { required: isRequired })}
       />
-    </div>
+    </>
   );
 }

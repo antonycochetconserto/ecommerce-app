@@ -8,69 +8,45 @@ const navigation: {
   categories: {
     id: string;
     name: string;
-    featured: {
+    products: {
       name: string;
       href: string;
       imageSrc: string;
       imageAlt: string;
     }[];
-    sections: {
-      id: string;
-      name: string;
-      items: { name: string; href: string }[];
-    }[];
   }[];
-  pages: { name: string; href: string }[];
 } = {
   categories: [
     {
-      id: 'categorie_1',
-      name: 'Categorie 1',
-      featured: [
+      id: 'shop',
+      name: 'La boutique',
+      products: [
         {
-          name: 'New Arrivals',
-          href: '#',
+          name: 'Desk and Office',
+          href: '/products/1',
           imageSrc:
-            'https://tailwindui.com/img/ecommerce-images/mega-menu-category-01.jpg',
+            'https://images.pexels.com/photos/8131589/pexels-photo-8131589.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load',
+          imageAlt:
+            'Models sitting back to back, wearing Basic Tee in black and bone.',
+        },
+        {
+          name: 'Desk and Office',
+          href: '/products/2',
+          imageSrc:
+            'https://images.pexels.com/photos/8129909/pexels-photo-8129909.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load',
+          imageAlt:
+            'Models sitting back to back, wearing Basic Tee in black and bone.',
+        },
+        {
+          name: 'Desk and Office',
+          href: '/products/3',
+          imageSrc:
+            'https://images.pexels.com/photos/4202325/pexels-photo-4202325.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load',
           imageAlt:
             'Models sitting back to back, wearing Basic Tee in black and bone.',
         },
       ],
-      sections: [
-        {
-          id: 'clothing',
-          name: 'Clothing',
-          items: [
-            { name: 'Tops', href: '#' },
-            { name: 'Dresses', href: '#' },
-            { name: 'Pants', href: '#' },
-            { name: 'Browse All', href: '#' },
-          ],
-        },
-        {
-          id: 'accessories',
-          name: 'Accessories',
-          items: [
-            { name: 'Watches', href: '#' },
-            { name: 'Wallets', href: '#' },
-            { name: 'Bags', href: '#' },
-          ],
-        },
-        {
-          id: 'brands',
-          name: 'Brands',
-          items: [
-            { name: 'Full Nelson', href: '#' },
-            { name: 'My Way', href: '#' },
-            { name: 'Re-Arranged', href: '#' },
-          ],
-        },
-      ],
     },
-  ],
-  pages: [
-    { name: 'La compagnie', href: '#' },
-    { name: 'La boutique', href: '#' },
   ],
 };
 

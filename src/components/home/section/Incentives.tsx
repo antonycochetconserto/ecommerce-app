@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useInView, motion } from 'framer-motion';
-import { ChatBubbleLeftRightIcon } from '@heroicons/react/24/solid';
+import { ChatBubbleLeftRightIcon } from '@heroicons/react/24/outline';
 
 export default function SectionIncentives() {
   const ref = useRef(null);
@@ -90,7 +90,7 @@ export default function SectionIncentives() {
                   key={index}
                   className="w-4/12 text-slate-600"
                 >
-                  <ChatBubbleLeftRightIcon className="w-8 h-8 mb-8 text-slate-400" />
+                  <ChatBubbleLeftRightIcon className="w-8 h-8 mb-8 text-slate-300" />
                   <p className="font-normal mb-2 text-xl">{review.content}</p>
                   <p className="text-slate-800 font-bold tracking-tight">
                     {review.author}
