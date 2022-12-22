@@ -8,14 +8,15 @@ export default function Header() {
           src="https://images.pexels.com/photos/8101596/pexels-photo-8101596.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.75 }}
+          transition={{ duration: 0.5 }}
         />
         <motion.div
-          initial={{ opacity: 0, translateY: 20 }}
+          initial={{ opacity: 0, translateY: 100 }}
           animate={{ opacity: 1, translateY: 0 }}
           transition={{
-            duration: 0.75,
-            ease: [0.17, 0.67, 0.83, 0.67],
+            type: 'spring',
+            damping: 20,
+            duration: 1,
           }}
           className="flex flex-col space-y-6 items-start ml-16"
         >
