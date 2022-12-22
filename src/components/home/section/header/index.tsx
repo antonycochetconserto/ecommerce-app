@@ -6,18 +6,14 @@ export default function Header() {
       <div className="flex items-center py-8">
         <motion.img
           src="https://images.pexels.com/photos/8101596/pexels-photo-8101596.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
+          initial={{ opacity: 0, translateX: -200 }}
+          animate={{ opacity: 1, translateX: 0 }}
+          transition={{ type: 'spring', damping: 20, duration: 1 }}
         />
         <motion.div
-          initial={{ opacity: 0, translateY: 100 }}
+          initial={{ opacity: 0, translateY: 200 }}
           animate={{ opacity: 1, translateY: 0 }}
-          transition={{
-            type: 'spring',
-            damping: 20,
-            duration: 1,
-          }}
+          transition={{ type: 'spring', damping: 20, duration: 1 }}
           className="flex flex-col space-y-6 items-start ml-16"
         >
           <h1 className="-ml-2 text-8xl font-bold tracking-tighter bg-clip-text text-transparent bg-[conic-gradient(at_top_right,_var(--tw-gradient-stops))] from-cyan-100 via-violet-600 to-indigo-900">
