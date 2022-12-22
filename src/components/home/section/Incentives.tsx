@@ -6,14 +6,36 @@ export default function SectionIncentives() {
   const ref = useRef(null);
   const isInView = useInView(ref, {
     once: true,
-    margin: '-100px 0px -0px 0px',
   });
+
+  const reviews: { content: string; author: string }[] = [
+    {
+      content:
+        'Mauris id augue sed lacus lacinia tempus placerat id eros. Cras ligula lacus. Lacus lacinia tempus placerat id!',
+      author: 'Antony Cochet',
+    },
+    {
+      content:
+        'Mauris id augue sed lacus lacinia tempus placerat id eros. Cras ligula lacus. Lacus lacinia tempus placerat id!',
+      author: 'Antony Cochet',
+    },
+    {
+      content:
+        'Mauris id augue sed lacus lacinia tempus placerat id eros. Cras ligula lacus. Lacus lacinia tempus placerat id!',
+      author: 'Antony Cochet',
+    },
+  ];
+  let timer = 0;
 
   return (
     <div className="max-w-7xl flex mx-auto px-8">
       <div className="flex flex-col py-36">
         <motion.div
           ref={ref}
+          style={{
+            opacity: isInView ? 1 : 0,
+            transition: 'all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s',
+          }}
           className="flex items-center justify-between border-b pb-20"
         >
           <motion.div
@@ -46,40 +68,36 @@ export default function SectionIncentives() {
           />
         </motion.div>
         <div className="flex flex-col text-slate-900 text-lg py-12">
-          <h3 className="font-semibold text-2xl tracking-tighter">
+          <motion.h3
+            style={{
+              opacity: isInView ? 1 : 0,
+              transition: 'all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s',
+            }}
+            className="font-semibold text-2xl tracking-tighter"
+          >
             What people saying ?
-          </h3>
+          </motion.h3>
           <ul className="flex flex-row justify-between space-x-20 mt-12">
-            <li className="w-4/12 text-slate-600">
-              <ChatBubbleLeftRightIcon className="w-8 h-8 mb-8 text-slate-400" />
-              <p className="font-normal mb-2 text-xl">
-                Mauris id augue sed lacus lacinia tempus placerat id eros. Cras
-                ligula lacus. Lacus lacinia tempus placerat id!
-              </p>
-              <p className="text-slate-800 font-bold tracking-tight">
-                Antony Cochet
-              </p>
-            </li>
-            <li className="w-4/12 text-slate-600">
-              <ChatBubbleLeftRightIcon className="w-8 h-8 mb-8 text-slate-400" />
-              <p className="font-normal mb-2 text-xl">
-                Mauris id augue sed lacus lacinia tempus placerat id eros. Cras
-                ligula lacus. Lacus lacinia tempus placerat id!
-              </p>
-              <p className="text-slate-800 font-bold tracking-tight">
-                Antony Cochet
-              </p>
-            </li>
-            <li className="w-4/12 text-slate-600">
-              <ChatBubbleLeftRightIcon className="w-8 h-8 mb-8 text-slate-400" />
-              <p className="font-normal mb-2 text-xl">
-                Mauris id augue sed lacus lacinia tempus placerat id eros. Cras
-                ligula lacus. Lacus lacinia tempus placerat id!
-              </p>
-              <p className="text-slate-800 font-bold tracking-tight">
-                Antony Cochet
-              </p>
-            </li>
+            {reviews.map((review, index) => {
+              timer += 0.4;
+              return (
+                <li
+                  style={{
+                    transform: isInView ? 'none' : 'translateY(200px)',
+                    opacity: isInView ? 1 : 0,
+                    transition: `all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) ${timer}s`,
+                  }}
+                  key={index}
+                  className="w-4/12 text-slate-600"
+                >
+                  <ChatBubbleLeftRightIcon className="w-8 h-8 mb-8 text-slate-400" />
+                  <p className="font-normal mb-2 text-xl">{review.content}</p>
+                  <p className="text-slate-800 font-bold tracking-tight">
+                    {review.author}
+                  </p>
+                </li>
+              );
+            })}
           </ul>
         </div>
       </div>

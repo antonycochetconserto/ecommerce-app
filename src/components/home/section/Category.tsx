@@ -45,8 +45,7 @@ export default function SectionCategory() {
           </h3>
           <div className="flex justify-between">
             {products.map((product, index) => {
-              timer += 0.3;
-              console.log(timer);
+              timer += 0.4;
               return (
                 <motion.div
                   style={{
