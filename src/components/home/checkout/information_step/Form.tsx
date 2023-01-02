@@ -1,26 +1,34 @@
-import { ChevronLeftIcon } from '@heroicons/react/20/solid';
+import {
+  ChevronLeftIcon,
+  HomeIcon,
+  ChevronRightIcon,
+} from '@heroicons/react/20/solid';
+import Link from 'next/link';
 import { useForm } from 'react-hook-form';
-import DashboardFormInput from '../../common/form/Input/Input';
+import DashboardFormInput from '../../../common/form/Input/Input';
+import WizardStep from '../WizardStep';
 
-export default function Form() {
+export default function FormInformationStep() {
   const {
     register,
     handleSubmit,
-    reset,
-    control,
     formState: { errors },
   } = useForm();
   const onSubmit = handleSubmit((data: any) => console.log(data));
   return (
     <div className="w-7/12">
       <div className="flex flex-col mx-auto px-20">
-        <h3 className="font-bold text-4xl text-slate-900 py-8">Brandii.</h3>
+        <h3 className="font-bold text-4xl text-slate-900 pt-8">Brandii.</h3>
+        <WizardStep />
         <form onSubmit={onSubmit}>
           <div className="flex flex-col">
             <div className="flex flex-col">
-              <button className="px-4 py-2 bg-indigo-600 text-white font-semibold rounded-md">
+              <Link
+                href="/signin"
+                className="px-4 py-2 bg-indigo-600 text-white font-semibold rounded-md text-center hover:bg-indigo-700"
+              >
                 Vous avez déjà un compte ?
-              </button>
+              </Link>
               <div className="relative flex py-8 items-center">
                 <div className="flex-grow border-t border-gray-400"></div>
                 <span className="flex-shrink mx-4 text-gray-800 font-semibold">
@@ -40,7 +48,7 @@ export default function Form() {
                     errors={errors}
                     labelTitle={'Nom'}
                     value={'name'}
-                    placeholder={'Votre nom ...'}
+                    placeholder={'Votre nom'}
                     isRequired={false}
                     type={'text'}
                   />
@@ -51,7 +59,7 @@ export default function Form() {
                     errors={errors}
                     labelTitle={'Prénom'}
                     value={'firstname'}
-                    placeholder={'Votre prénom ...'}
+                    placeholder={'Votre prénom'}
                     isRequired={false}
                     type={'text'}
                   />
@@ -110,15 +118,18 @@ export default function Form() {
               />
             </div>
             <div className="flex flex-row justify-between items-center pt-6">
-              <p className="flex items-center text-sm">
+              <Link href="/" className="flex items-center text-sm">
                 <span>
                   <ChevronLeftIcon className="w-5 h-5 mr-1" />
                 </span>
                 Retour à la boutique
-              </p>
-              <button className="px-4 py-2 bg-indigo-600 text-white font-semibold rounded-md">
-                Continuer vers le paiement
-              </button>
+              </Link>
+              <Link
+                href="/checkouts/4/shipping"
+                className="px-4 py-2 bg-indigo-600 text-white font-semibold rounded-md hover:bg-indigo-700"
+              >
+                Continuer vers l'expédition
+              </Link>
             </div>
           </div>
         </form>
