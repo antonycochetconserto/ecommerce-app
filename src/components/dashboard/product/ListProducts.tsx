@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { listProducts } from '../../../graphql/queries';
 import { TProduct } from '../../../ts/types/product/tproduct';
+import Dropdown from '../../common/dropdowns/Index';
 
 export default function ListProducts() {
   const [products, setProducts] = useState<TProduct[]>([]);
@@ -88,12 +89,7 @@ export default function ListProducts() {
                       )}
                     </td>
                     <td className="py-4 px-6 text-right">
-                      <a
-                        href="#"
-                        className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-                      >
-                        Editer
-                      </a>
+                      <Dropdown />
                     </td>
                   </tr>
                 );

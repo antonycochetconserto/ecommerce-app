@@ -1,6 +1,5 @@
 import FormPaymentStep from '../../../components/home/checkout/payment_step/Form';
 import Informations from '../../../components/home/checkout/Informations';
-import { useState } from 'react';
 
 export default function shipping() {
   return (

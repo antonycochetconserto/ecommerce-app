@@ -1,11 +1,11 @@
 import Navbar from '../../../components/dashboard/navbar';
-import AddProduct from '../../../components/dashboard/product/AddProduct';
+import OverviewProduct from '../../../components/dashboard/product/add/OverviewProduct';
 
 export default function addproduct() {
   return (
     <div className="h-screen bg-slate-50">
       <Navbar />
-      <AddProduct />
+      <OverviewProduct />
     </div>
   );
 }

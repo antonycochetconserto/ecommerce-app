@@ -5,7 +5,6 @@ interface IDashboardFormInput {
   errors: any;
   labelTitle: string;
   value: string;
-  placeholder: string;
   isRequired: boolean;
 }
 
@@ -14,22 +13,23 @@ export default function DashboardFormTextArea({
   errors,
   labelTitle,
   value,
-  placeholder,
   isRequired,
 }: IDashboardFormInput) {
   return (
-    <div>
-      <Label labelTitle={labelTitle} isRequired={isRequired} />
+    <div className="relative">
       <textarea
         rows={4}
-        className={`${
-          errors[value] && errors[value].type === 'required'
-            ? 'border-red-500'
-            : 'border-gray-300'
-        } bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5`}
-        placeholder={placeholder}
+        id={value}
+        className="block px-4 py-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-400 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+        placeholder=" "
         {...register(value, { required: isRequired })}
       ></textarea>
+      <label
+        htmlFor={value}
+        className="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-9 peer-placeholder-shown:top-12 peer-focus:top-2 peer-focus:scale-90 font-semibold peer-focus:-translate-y-4 left-2"
+      >
+        {labelTitle}
+      </label>
     </div>
   );
 }
