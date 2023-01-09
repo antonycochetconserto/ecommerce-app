@@ -6,11 +6,6 @@ import { useEffect, useState } from 'react';
 import { listBrands, listCategories } from '../../../../graphql/queries';
 import { TCategory } from '../../../../ts/types/category/tcategory';
 
-import DashboardFormInput from '../../../common/form/Input/Input';
-import DashboardFormTextArea from '../../../common/form/Textarea';
-import DashboardFormFile from '../../../common/form/Input/InputFile';
-import DashboardFormCheckboxHelperText from '../../../common/form/Checkbox/HelperText';
-import DashboardHomeReactSelect from '../../../common/form/Select/ReactSelect';
 import { TBrand } from '../../../../ts/types/brand/tbrand';
 import { CloudArrowUpIcon } from '@heroicons/react/24/outline';
 import {
@@ -18,8 +13,10 @@ import {
   InformationCircleIcon,
   PencilIcon,
   PlusCircleIcon,
+  PlusSmallIcon,
   RocketLaunchIcon,
 } from '@heroicons/react/20/solid';
+import DragAndDrop from './overview/DragAndDrop';
 
 export default function ProductOverview() {
   const [categories, setCategories] = useState<TCategory[]>([]);
@@ -32,6 +29,7 @@ export default function ProductOverview() {
     formState: { errors },
   } = useForm<TProduct>();
   const onSubmit = handleSubmit((data) => addProduct(data));
+  const [isMoreChamp, setIsMoreChamp] = useState<boolean>(false);
 
   useEffect(() => {
     fetchCategories();
@@ -85,8 +83,11 @@ export default function ProductOverview() {
               </div>
             </li>
           </ol>
-          <button className="rounded-md bg-gray-200 text-white px-4 py-2">
-            Valider le produit
+          <button className="rounded-md bg-slate-800 text-white px-4 py-2 font-medium text-sm">
+            Aperçu
+          </button>
+          <button className="rounded-md bg-slate-200 text-white px-4 py-2 font-medium text-sm">
+            Valider
           </button>
         </div>
       </div>
@@ -147,7 +148,7 @@ export default function ProductOverview() {
           </div>
         </div>
         <div className="flex flex-col w-6/12">
-          <div className="flex flex-col space-y-6">
+          <div className="flex flex-col space-y-8">
             <div className="relative w-6/12">
               <input
                 type="text"
@@ -169,14 +170,17 @@ export default function ProductOverview() {
                   type="number"
                   id="title"
                   min={0}
-                  className="block p-4 w-full font-semibold text-gray-900 bg-gray-100 rounded-md appearance-none focus:outline-none peer"
+                  className="relative block p-4 w-full font-semibold text-gray-900 bg-gray-100 rounded-md appearance-none focus:outline-none peer"
                   placeholder=" "
                 />
+                <div className="px-2 bg-white absolute right-8 top-1/2 transform -translate-y-1/2 font-semibold rounded-md">
+                  €
+                </div>
                 <label
                   htmlFor="title"
                   className="absolute rounded-md text-sm text-gray-600 duration-300 transform -translate-y-4 bg-white top-2 z-10 origin-[0] px-2 peer-focus:px-2 peer-focus:text-gray-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-90 peer-focus:bg-white font-semibold peer-focus:-translate-y-4 left-2"
                 >
-                  Prix €
+                  Prix
                 </label>
               </div>
               <div className="relative w-3/12">
@@ -197,7 +201,7 @@ export default function ProductOverview() {
             </div>
             <div className="relative w-full">
               <textarea
-                rows={4}
+                rows={8}
                 id="description"
                 className="block w-full p-4 font-semibold text-gray-900 bg-gray-100 rounded-md appearance-none focus:outline-none peer"
                 placeholder=" "
@@ -210,18 +214,30 @@ export default function ProductOverview() {
               </label>
             </div>
             <div className="flex flex-col border-2 border-gray-200 border-dashed rounded-md w-full px-4 pb-4 relative space-y-4">
-              <div className="absolute flex flex-row items-center bg-white rounded-md top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 px-5 py-6 justify-center shadow-xl cursor-pointer">
-                <PlusCircleIcon className="w-8 h-8 text-blue-600 mr-2 absolute -top-4 -right-6" />
-                <h3 className="font-semibold tracking-tight text-slate-700 text-sm">
-                  Ajoutez des champs personnalisés
-                </h3>
-              </div>
-              <div className="bg-gray-100 rounded-md w-full h-16 animate-pulse"></div>
-              <div className="flex flex-row justify-between space-x-2">
-                <div className="bg-gray-100 rounded-md w-7/12 h-16 animate-pulse"></div>
-                <div className="bg-gray-100 rounded-md w-5/12 h-16 animate-pulse"></div>
-              </div>
-              <div className="bg-gray-100 rounded-md w-full h-36 animate-pulse"></div>
+              {isMoreChamp ? (
+                <>
+                  <PlusSmallIcon className="w-7 h-7 bg-white text-blue-600 absolute -top-4 -right-4 cursor-pointer rounded-full" />
+                  <DragAndDrop />
+                </>
+              ) : (
+                <>
+                  <button
+                    onClick={() => setIsMoreChamp(true)}
+                    className="absolute flex flex-row items-center bg-white rounded-md top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 px-5 py-6 justify-center shadow-xl cursor-pointer"
+                  >
+                    <PlusCircleIcon className="w-8 h-8 text-blue-600 mr-2 absolute -top-4 -right-6" />
+                    <h3 className="font-semibold tracking-tight text-slate-700 text-sm">
+                      Ajoutez des champs personnalisés
+                    </h3>
+                  </button>
+                  <div className="bg-gray-100 rounded-md w-full h-16 animate-pulse"></div>
+                  <div className="flex flex-row justify-between space-x-2">
+                    <div className="bg-gray-100 rounded-md w-7/12 h-16 animate-pulse"></div>
+                    <div className="bg-gray-100 rounded-md w-5/12 h-16 animate-pulse"></div>
+                  </div>
+                  <div className="bg-gray-100 rounded-md w-full h-36 animate-pulse"></div>
+                </>
+              )}
             </div>
           </div>
         </div>
