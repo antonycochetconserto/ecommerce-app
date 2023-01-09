@@ -213,7 +213,7 @@ export default function ProductOverview() {
                 Description
               </label>
             </div>
-            <div className="flex flex-col border-2 border-gray-200 border-dashed rounded-md w-full px-4 pb-4 relative space-y-4">
+            <div className="overflow-hidden flex flex-col border-2 border-gray-200 border-dashed rounded-md w-full px-4 pb-4 relative space-y-4">
               {isMoreChamp ? (
                 <>
                   <PlusSmallIcon className="w-7 h-7 bg-white text-blue-600 absolute -top-4 -right-4 cursor-pointer rounded-full" />
