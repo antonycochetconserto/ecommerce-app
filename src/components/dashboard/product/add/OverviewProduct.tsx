@@ -13,7 +13,6 @@ import {
   InformationCircleIcon,
   PencilIcon,
   PlusCircleIcon,
-  PlusSmallIcon,
   RocketLaunchIcon,
 } from '@heroicons/react/20/solid';
 import DragAndDrop from './overview/DragAndDrop';

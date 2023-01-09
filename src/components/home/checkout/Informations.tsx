@@ -75,7 +75,6 @@ export default function Informations() {
               register={register}
               errors={errors}
               value={'discount'}
-              placeholder={'Un code de promotion ?'}
               isRequired={false}
               type={'text'}
             />

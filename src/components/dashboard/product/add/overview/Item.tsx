@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useMotionValue, Reorder, useDragControls } from 'framer-motion';
 import { XCircleIcon } from '@heroicons/react/20/solid';
-import { Bars4Icon, ListBulletIcon } from '@heroicons/react/24/solid';
+import { Bars4Icon } from '@heroicons/react/24/solid';
 
 interface IItem {
   item: {
