@@ -15,7 +15,7 @@ export default function App() {
   return (
     <Reorder.Group
       axis="y"
-      className="space-y-4"
+      className="space-y-3 pt-4"
       onReorder={setItems}
       values={items}
     >

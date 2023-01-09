@@ -216,16 +216,18 @@ export default function ProductOverview() {
             <div className="overflow-hidden flex flex-col border-2 border-gray-200 border-dashed rounded-md w-full px-4 pb-4 relative space-y-4">
               {isMoreChamp ? (
                 <>
-                  <PlusSmallIcon className="w-7 h-7 bg-white text-blue-600 absolute -top-4 -right-4 cursor-pointer rounded-full" />
                   <DragAndDrop />
+                  <button className="bg-indigo-600 text-white font-medium rounded-md mt-4 py-2 ml-auto px-4 text-sm hover:bg-indigo-700">
+                    Ajouter un champ supplémentaire
+                  </button>
                 </>
               ) : (
                 <>
                   <button
                     onClick={() => setIsMoreChamp(true)}
-                    className="absolute flex flex-row items-center bg-white rounded-md top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 px-5 py-6 justify-center shadow-xl cursor-pointer"
+                    className="absolute flex flex-row items-center bg-white rounded-md top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 px-5 py-5 justify-center shadow-xl cursor-pointer"
                   >
-                    <PlusCircleIcon className="w-8 h-8 text-blue-600 mr-2 absolute -top-4 -right-6" />
+                    <PlusCircleIcon className="w-8 h-8 text-blue-600 mr-2 absolute -top-3 -right-5" />
                     <h3 className="font-semibold tracking-tight text-slate-700 text-sm">
                       Ajoutez des champs personnalisés
                     </h3>
