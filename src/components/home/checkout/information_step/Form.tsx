@@ -48,7 +48,6 @@ export default function FormInformationStep() {
                     errors={errors}
                     labelTitle={'Nom'}
                     value={'name'}
-                    placeholder={'Votre nom'}
                     isRequired={false}
                     type={'text'}
                   />
@@ -59,7 +58,6 @@ export default function FormInformationStep() {
                     errors={errors}
                     labelTitle={'Prénom'}
                     value={'firstname'}
-                    placeholder={'Votre prénom'}
                     isRequired={false}
                     type={'text'}
                   />
@@ -70,7 +68,6 @@ export default function FormInformationStep() {
                 errors={errors}
                 labelTitle={'Adresse mail'}
                 value={'mail'}
-                placeholder={'Votre adresse mail'}
                 isRequired={false}
                 type={'text'}
               />
@@ -79,7 +76,6 @@ export default function FormInformationStep() {
                 errors={errors}
                 labelTitle={'Adresse'}
                 value={'adress'}
-                placeholder={'Adresse'}
                 isRequired={false}
                 type={'text'}
               />
@@ -90,7 +86,6 @@ export default function FormInformationStep() {
                     errors={errors}
                     labelTitle={'Code postal'}
                     value={'zip'}
-                    placeholder={'Votre code postal'}
                     isRequired={false}
                     type={'text'}
                   />
@@ -101,7 +96,6 @@ export default function FormInformationStep() {
                     errors={errors}
                     labelTitle={'Ville'}
                     value={'city'}
-                    placeholder={'Votre ville'}
                     isRequired={false}
                     type={'text'}
                   />
@@ -112,7 +106,6 @@ export default function FormInformationStep() {
                 errors={errors}
                 labelTitle={'Numéro de téléphone'}
                 value={'phone'}
-                placeholder={'Téléphone'}
                 isRequired={false}
                 type={'text'}
               />
