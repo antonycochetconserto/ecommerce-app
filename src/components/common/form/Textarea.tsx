@@ -1,5 +1,3 @@
-import Label from './Label/label';
-
 interface IDashboardFormInput {
   register: any;
   errors: any;

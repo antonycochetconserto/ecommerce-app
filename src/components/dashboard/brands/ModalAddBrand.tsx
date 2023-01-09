@@ -79,7 +79,6 @@ export default function ModalAddBrand({ setIsOpen, isOpen }: IModalAddBrand) {
                           errors={errors}
                           labelTitle={'Nom de la marque'}
                           value={'title'}
-                          placeholder={'Titre de la marque'}
                           isRequired={false}
                           type={'text'}
                         />
@@ -88,7 +87,6 @@ export default function ModalAddBrand({ setIsOpen, isOpen }: IModalAddBrand) {
                           errors={errors}
                           labelTitle={'Sous-titre de la marque'}
                           value={'subTitle'}
-                          placeholder={'Sous-titre de la marque'}
                           isRequired={false}
                           type={'text'}
                         />
@@ -97,7 +95,6 @@ export default function ModalAddBrand({ setIsOpen, isOpen }: IModalAddBrand) {
                           errors={errors}
                           labelTitle={'Description de la marque'}
                           value={'fullDescription'}
-                          placeholder={'Description de la marque'}
                           isRequired={false}
                         />
                         <div className="flex items-center pl-4 rounded border border-gray-200 bg-gray-50">
