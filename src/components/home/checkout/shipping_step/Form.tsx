@@ -4,7 +4,11 @@ import { useForm } from 'react-hook-form';
 import DashboardFormInput from '../../../common/form/Input/Input';
 import WizardStep from '../WizardStep';
 
-export default function FormShippingStep() {
+interface IFormShippingStep {
+  paymentIntent: undefined;
+}
+
+export default function FormShippingStep({ paymentIntent }: IFormShippingStep) {
   const {
     register,
     handleSubmit,
