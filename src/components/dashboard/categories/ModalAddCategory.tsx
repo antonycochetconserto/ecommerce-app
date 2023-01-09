@@ -82,7 +82,6 @@ export default function ModalAddCategory({
                           errors={errors}
                           labelTitle={'Nom de la catégorie'}
                           value={'title'}
-                          placeholder={'Titre de la catégorie'}
                           isRequired={false}
                           type={'text'}
                         />
@@ -91,7 +90,6 @@ export default function ModalAddCategory({
                           errors={errors}
                           labelTitle={'Sous-titre de la catégorie'}
                           value={'subTitle'}
-                          placeholder={'Sous-titre de la catégorie'}
                           isRequired={false}
                           type={'text'}
                         />
@@ -100,7 +98,6 @@ export default function ModalAddCategory({
                           errors={errors}
                           labelTitle={'Description de la catégorie'}
                           value={'fullDescription'}
-                          placeholder={'Description de la catégorie'}
                           isRequired={false}
                         />
                         <div className="flex items-center pl-4 rounded border border-gray-200 bg-gray-50">
