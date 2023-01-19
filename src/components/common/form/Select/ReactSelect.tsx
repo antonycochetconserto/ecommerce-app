@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Controller } from 'react-hook-form';
 import ReactSelect from 'react-select';
-import { TCategory } from '../../../../ts/types/category/tcategory';
 import { changeKeys } from '../../../../ts/helperFunctions/changeKeys';
 
 interface IDashboardHomeReactSelect {
@@ -11,6 +10,7 @@ interface IDashboardHomeReactSelect {
   value: string;
   placeholder: string;
   data: {}[];
+  handleSelection: (value: string) => void;
 }
 export default function DashboardHomeReactSelect({
   register,
@@ -19,6 +19,7 @@ export default function DashboardHomeReactSelect({
   value,
   placeholder,
   data,
+  handleSelection,
 }: IDashboardHomeReactSelect) {
   const keyMap = {
     id: 'value',
@@ -30,7 +31,7 @@ export default function DashboardHomeReactSelect({
 
   return (
     <>
-      <label className="block text-sm font-medium text-gray-900">
+      <label className="block text-sm font-medium text-gray-900 mb-4">
         {labelTitle}
       </label>
       <Controller
@@ -48,10 +49,11 @@ export default function DashboardHomeReactSelect({
                 fontSize: '0.875rem',
               }),
             }}
+            className="z-20"
             placeholder={placeholder}
             value={newArrayData.find((c) => c.value === value)}
             onChange={(selectedOption: any) => {
-              onChange(selectedOption.value);
+              onChange(handleSelection(selectedOption.value));
             }}
           />
         )}

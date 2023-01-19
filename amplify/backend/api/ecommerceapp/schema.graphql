@@ -6,19 +6,14 @@ input AMPLIFY {
 type Product @model {
   id: ID!
   title: String!
-  subTitle: String
   price: Float
-  quickDescription: String
   fullDescription: String
-  size: String
-  weight: Float
-  quantity: Int
   isAvailable: Boolean
   reference: String
-  stock: Int
-  composition: String
+  stock: Int!
   category: Category @hasOne
   brand: Brand @hasOne
+  ExtraField: [ExtraField] @hasMany
 }
 
 type Category @model {
@@ -38,4 +33,9 @@ type Brand @model {
   image: String
   isAvailable: Boolean
   products: [Product] @hasMany
+}
+
+type ExtraField @model {
+  id: ID!
+  json: [AWSJSON]!
 }

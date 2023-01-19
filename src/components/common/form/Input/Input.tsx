@@ -1,3 +1,5 @@
+import { Dispatch, SetStateAction, useState } from 'react';
+
 interface IDashboardFormInput {
   register: any;
   errors: any;
